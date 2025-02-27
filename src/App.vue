@@ -4,7 +4,7 @@
       <div class="">
         <HeaderNavbar/>
         <MainNavbar/>
-        <!-- <MainGames/> -->
+        <MainGames/>
         <!-- <MainBody/> -->
         <Footer/>
       </div>
@@ -16,14 +16,14 @@
   import HeaderNavbar from './components/HeaderNavbar.vue'
   import MainNavbar from './components/MainNavbar.vue'
   import Footer from './components/Footer.vue'
-  // import MainGames from './components/MainGames.vue';
+  import MainGames from './components/MainGames.vue';
   // import MainBody from './components/MainBody.vue'
 
   export default {
     components: {
       HeaderNavbar,
       MainNavbar,
-      // MainGames,
+      MainGames,
       // MainBody,
       Footer
     }

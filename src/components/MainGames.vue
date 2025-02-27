@@ -1,31 +1,31 @@
 <template>
     <!-- Main Container -->
-    <div class="min-h-screen w-full min-w-full">
-        <div class="w-[1440px] mx-auto flex py-10 ">    
-            <!-- <div class="w-[1440px] mx-auto ">
-                <h1 class="text-4xl font-bold">Latest Maps</h1>
-            </div> -->
-            <!-- <div class=" flex items-center ">
-                <input type="search" placeholder="Sort by Top Concurrent " class="border-transparent">
+    <div class="min-h-screen w-full">
+        <div class="max-w-[1440px] w-full mx-auto flex flex-wrap py-10 px-4 md:px-10">
+            <!-- Title Section (Uncomment if needed) -->
+            <!-- <h1 class="text-4xl font-bold">Latest Maps</h1> -->
+
+            <!-- Search Bar (Uncomment if needed) -->
+            <!-- <div class="flex items-center w-full">
+                <input type="search" placeholder="Sort by Top Concurrent" class="border p-2 rounded-md w-full sm:w-auto">
             </div> -->
         </div>
-            <!-- Card Components Data -->
-            <div class="flex w-[1440px] mx-auto">
-                <MainBody/>
-            </div>
-            <div>
-                <!-- <h1>hello pakistan</h1> -->
-                <GameCard/>
-            </div>
+
+        <!-- Card Components Data -->
+        <div class="max-w-[1440px] w-full mx-auto px-4 md:px-10">
+            <MainBody />
+        </div>
     </div>
 </template>
+
 <script>
-    import GameCard from '../components/templates/GameCard.vue'
-    import MainBody from '../components/MainBody.vue'
-    export default {
+import GameCard from '../components/templates/GameCard.vue'
+import MainBody from '../components/MainBody.vue'
+
+export default {
     components: {
-      GameCard,
-      MainBody
+        GameCard,
+        MainBody
     }
-  }
+}
 </script>

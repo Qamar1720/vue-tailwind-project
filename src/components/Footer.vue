@@ -58,16 +58,16 @@
         <!-- Copyright -->
         <div class="relative mt-12 pt-6 text-center text-gray-400 flex md:flex-row flex-col gap-4 md:gap-0 justify-around bg-[#1A0B2E]">
             <div class="flex gap-6 justify-center items-center text-2xl text-white cursor-pointer">
-                <div class="border-2 rounded-full p-2 border-[#3E344B] hover:text-[#DF3F2A] hover:shadow-[#DF3F2A] hover:shadow-[0_0_22px_0px]">
+                <div class="border-2 rounded-full p-2 border-[#3E344B] hover:text-[#DF3F2A] hover:shadow-[#DF3F2A] hover:shadow-[0_0_22px_0px] px-4">
                     <i class="fa fa-twitter"></i>
                 </div>
-                <div class="border-2 rounded-full p-2 border-[#3E344B] hover:text-[#DF3F2A] shadow-[#DF3F2A] hover:shadow-[0_0_22px_2px]">
+                <div class="border-2 rounded-full p-2 border-[#3E344B] hover:text-[#DF3F2A] shadow-[#DF3F2A] hover:shadow-[0_0_22px_2px] px-4">
                     <i class="fa fa-facebook"></i>
                 </div>
-                <div class="border-2 rounded-full p-2 border-[#3E344B] hover:text-[#DF3F2A] shadow-[#DF3F2A] hover:shadow-[0_0_22px_2px]">
+                <div class="border-2 rounded-full p-2 border-[#3E344B] hover:text-[#DF3F2A] shadow-[#DF3F2A] hover:shadow-[0_0_22px_2px] px-4">
                     <i class="fa fa-pinterest"></i>
                 </div>
-                <div class="border-2 rounded-full p-2 border-[#3E344B] hover:text-[#DF3F2A] shadow-[#DF3F2A] hover:shadow-[0_0_22px_2px]">
+                <div class="border-2 rounded-full p-2 border-[#3E344B] hover:text-[#DF3F2A] shadow-[#DF3F2A] hover:shadow-[0_0_22px_2px] px-4">
                     <i class="fa fa-instagram"></i>
                 </div>
             </div>

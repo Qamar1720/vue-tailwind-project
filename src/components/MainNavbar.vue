@@ -1,5 +1,5 @@
 <template>
-<div class=" w-full min-w-full bg-[#1A0B2E] h-screen relative pt-8">
+<div class=" w-full flex min-w-full bg-[#1A0B2E] min-h-screen relative pt-8">
   <!-- Background Image -->
   <div class="w-full flex items-center justify-center relative">
     <img src="/home/test/Documents/Demo project/vue-tailwind-project/src/assets/pics/header_image.jpg" alt="" class="w-full">
@@ -41,20 +41,21 @@
     <li class="hover:text-[#DF3F2A] hover:rounded-full cursor-pointer">NEWS & UPDATES</li>
   </ul>
 </div>
-    <div class="hidden md:flex gap-6 text-2xl text-white cursor-pointer ">
-      <div class="border-2 rounded-full p-2 border-[#3E344B] hover:text-[#DF3F2A] hover:shadow-[#DF3F2A] hover:shadow-[0_0_22px_0px]">
-        <i class="fa fa-twitter"></i>
-      </div>
-        <div class="border-2 rounded-full p-2 border-[#3E344B] hover:text-[#DF3F2A] shadow-[#DF3F2A] hover:shadow-[0_0_22px_2px]">
-        <i class="fa fa-facebook"></i>
-      </div>
-        <div class="border-2 rounded-full p-2 border-[#3E344B] hover:text-[#DF3F2A] shadow-[#DF3F2A] hover:shadow-[0_0_22px_2px]">
-        <i class="fa fa-pinterest"></i>
-      </div>
-        <div class="border-2 rounded-full p-2 border-[#3E344B] hover:text-[#DF3F2A] shadow-[#DF3F2A] hover:shadow-[0_0_22px_2px]">
-        <i class="fa fa-instagram"></i>
-      </div>
-      </div>
+<div class="hidden lg:flex flex-wrap gap-4 md:gap-5 lg:gap-6 text-xl md:text-2xl text-white cursor-pointer">
+  <div class="border-2 rounded-full p-2 md:p-3 lg:p-2 border-[#3E344B] hover:text-[#DF3F2A] hover:shadow-[#DF3F2A] hover:shadow-[0_0_22px_0px]">
+    <i class="fa fa-twitter"></i>
+  </div>
+  <div class="border-2 rounded-full p-2 md:p-3 lg:p-2 border-[#3E344B] hover:text-[#DF3F2A] hover:shadow-[#DF3F2A] hover:shadow-[0_0_22px_2px]">
+    <i class="fa fa-facebook"></i>
+  </div>
+  <div class="border-2 rounded-full p-2 md:p-3 lg:p-2 border-[#3E344B] hover:text-[#DF3F2A] hover:shadow-[#DF3F2A] hover:shadow-[0_0_22px_2px]">
+    <i class="fa fa-pinterest"></i>
+  </div>
+  <div class="border-2 rounded-full p-2 md:p-3 lg:p-2 border-[#3E344B] hover:text-[#DF3F2A] hover:shadow-[#DF3F2A] hover:shadow-[0_0_22px_2px]">
+    <i class="fa fa-instagram"></i>
+  </div>
+</div>
+
 </div>
 </div>
 </template>

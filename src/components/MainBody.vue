@@ -1,7 +1,5 @@
 <template>
   <div class="p-6">
-    <!-- <h1 class="text-2xl font-bold text-white">Popular Games</h1> -->
-    
     <!-- Loading Indicator -->
     <p v-if="loading" class="text-gray-400">Loading games...</p>
     
@@ -9,16 +7,28 @@
     <p v-if="error" class="text-red-500">{{ error }}</p>
     
     <!-- Game List -->
-    <div v-if="games.length" class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-2 w-full">
-      <div v-for="game in games" :key="game.id" class="p-2 rounded-lg shadow-md text-black bg-white ">
-        <img :src="game.background_image" alt="Game Image" class="h-40 object-cover rounded-md" />
-        <div class="w-96  mx-auto flex flex-col gap-4">
-          <h2 class="text-2xl font-bold mt-2">{{ game.name }}</h2>
-          <p class="">Released: {{ game.released }}</p>
-          <div class="flex items-center pt-3">
-            <button class="rounded-xl cursor-pointer hover:bg-[#D83831] border-2 p-2 hover:text-white text-[#D83831]">Add to playlist</button>
-            <!-- <p><i class="fa fa-heart"></i></p>
-            <p><i class="fa fa-share"></i></p> -->
+    <div v-if="games.length" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-2 w-full cursor-pointer">
+      <div v-for="game in games" :key="game.id" class="p-4 rounded-lg shadow-md text-black bg-white">
+        <div class="relative">
+          <img :src="game.background_image" alt="Game Image" class="h-48 sm:h-56 md:h-64 object-cover rounded-md w-full" />
+          <p class="absolute top-0 left-27 rounded-3xl px-3 py-1 font-bold text-lg bg-[#D83831] text-white">
+            <i class="fa fa-link"></i> 01234-567
+          </p>
+        </div>
+        <div class="flex flex-col gap-3 mt-3">
+          <i class="fa fa-users text-[#D83831] fa-2x">
+            <span class="text-gray-600 text-lg ml-1">6.5k</span>
+          </i>
+          <h2 class="text-xl md:text-2xl font-bold">{{ game.name }}</h2>
+          <p class="text-sm md:text-lg font-bold">Released: {{ game.released }}</p>
+          <div class="flex items-center justify-between pt-3">
+            <button class="rounded-2xl text-sm md:text-lg font-bold cursor-pointer hover:bg-[#D83831] border-2 px-4 py-2 hover:text-white text-[#D83831]">
+              Add to playlist
+            </button>
+            <div class="font-bold flex gap-4 cursor-pointer text-xl">
+              <i class="fa fa-heart text-gray-400 fa-2"></i>
+              <i class="fa fa-share text-gray-400 fa-2"></i>
+            </div>
           </div>
         </div>
       </div>
