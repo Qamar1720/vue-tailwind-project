@@ -4,12 +4,13 @@
   </div>
 <div class=" w-full flex min-w-full bg-[#1A0B2E] min-h-screen relative pt-8">
   <!-- Background Image -->
-  <div class="w-full flex items-center justify-center relative">
-    <img src="/home/test/Documents/Demo project/vue-tailwind-project/src/assets/pics/header_image.jpg" alt="" class="w-full">
-   </div>
-   <div class="max-w-[1440px] w-full mx-auto flex md:flex-col md:gap-5 xl:gap-0 xl:flex-row justify-between items-center absolute top-4 left-1/2 -translate-x-1/2 px-6 z-10 listitems">
+  <div class="w-full my-auto flex items-center justify-center relative">
+    <img src="../assets/pics/header_image.jpg" alt="" class="w-full h-auto object-cover block">
+</div>
+
+   <div class="max-w-[1440px] w-full mx-auto flex md:flex-col md:gap-5 xl:gap-0 xl:flex-row justify-between items-center absolute top-4 left-1/2 -translate-x-1/2 px-2 z-10 listitems">
     <!-- Logo -->
-    <div class="cursor-pointer w-auto">
+    <div class="cursor-pointer w-auto px-4 sm:px-0 z-100">
       <img src="../assets/pics/logo.png" alt="Logo" class="h-12 w-auto" />
     </div>
     
@@ -37,7 +38,8 @@
 
   
   <!-- Hamburger Menu and Close Icon -->
-  <div class="md:hidden flex gap-4 text-[#3E344B] text-3xl ">
+  <!-- <div class="md:hidden flex gap-4 text-[#3E344B] text-3xl z-100 px-5"> -->
+  <div class="md:hidden flex gap-4 text-white text-3xl z-100 px-5">
     <i :class="isMenuOpen ? 'fa fa-times' : 'fa fa-bars'" 
     class="cursor-pointer" 
     @click="toggleMenu">
@@ -45,8 +47,8 @@
 </div>
 
 <!-- Mobile Navigation Menu (Visible when menu is toggled) -->
-<div v-if="isMenuOpen" class="md:hidden bg-[#1A0B2E] text-white flex flex-col absolute top-18 -left-32 translate-x-50 transition-all duration-300 ease-in-out items-center py-4 z-50 shadow-md">
-  <ul class="flex flex-col gap-6 font-bold w-74 text-center">
+<div v-if="isMenuOpen" class="fixed inset-0 bg-[#1A0B2E] text-white flex md:hidden flex-col items-center justify-center min-h-screen transition-all duration-300 ease-in-out z-10 shadow-md">
+  <ul class="flex flex-col gap-6 font-bold w-full text-center">
     <li class="hover:text-[#DF3F2A] hover:rounded-full cursor-pointer">HOME</li>
     <li class="hover:text-[#DF3F2A] hover:rounded-full cursor-pointer">DISCOVER LIVE</li>
     <li class="hover:text-[#DF3F2A] hover:rounded-full cursor-pointer">CATEGORIES</li>
@@ -87,12 +89,13 @@ export default {
 }
 };
 </script>
-<style scoped>
+<style scoped> -->
   @media screen and (min-width:1279px) and (max-width:1290px){
-  .listitems{
+  /* .listitems{
       display: flex;
       flex-direction: column;
       gap: 14;
-    }
+    } */
   }
+
 </style>
