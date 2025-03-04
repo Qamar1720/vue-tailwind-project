@@ -95,17 +95,25 @@
       </button>
 
       <!-- Page Numbers -->
-      <template v-for="page in totalPages" :key="page">
-        <button
-          @click="currentPage = page"
-          :class="[
-            'px-4 py-2 rounded-full',
-            currentPage === page ? 'bg-red-500 text-white' : 'bg-gray-200',
-          ]"
-        >
-          {{ page }}
-        </button>
-      </template>
+      <template v-for="(page) in displayedPages" :key="page">
+      <button
+        v-if="page !== '...' "
+        @click="currentPage = page"
+        :class="[
+          'px-4 py-2 rounded-full',
+          currentPage === page ? 'bg-red-500 text-white' : 'bg-gray-200',
+        ]"
+      >
+        {{ page }}
+      </button>
+      <button
+        v-if="page === '...' "
+        @click="showMorePages"
+        class="px-4 py-2 rounded-full bg-gray-200 flex items-center justify-center"
+      >
+        ...
+      </button>
+    </template>
 
       <!-- Next Button -->
       <button
@@ -128,11 +136,14 @@ const loading = ref(true);
 const error = ref(null);
 const currentPage = ref(1);
 const itemsPerPage = 12;
+const page_size = 100;
 
+
+// Fetch games from the API
 const fetchGames = async () => {
   try {
     const response = await fetch(
-      `https://api.rawg.io/api/games?key=${API_KEY}`
+      `https://api.rawg.io/api/games?key=${API_KEY}&page_size=${page_size}`
     );
     if (!response.ok) throw new Error("Failed to fetch games");
 
@@ -155,6 +166,35 @@ const paginatedGames = computed(() => {
 // Total number of pages
 const totalPages = computed(() => Math.ceil(games.value.length / itemsPerPage));
 
+// Computed property for the pages to display in pagination
+const displayedPages = computed(() => {
+  const pages = [];
+  
+  // Add the first 3 pages
+  for (let i = 1; i <= 3; i++) {
+    if (i <= totalPages.value) {
+      pages.push(i);
+    }
+  }
+
+  // Add ellipsis if there are more than 3 pages
+  if (totalPages.value > 3) {
+    pages.push('...');
+  }
+
+  return pages;
+});
+
+// Method to handle the page number click
+const handlePageClick = (page) => {
+  if (page === '...') {
+    // Logic to handle when ellipsis is clicked, can show more pages
+    // For simplicity, we will just go to the next page after 3
+    currentPage.value = 4; // You can adjust this logic as per your requirements
+  } else {
+    currentPage.value = page;
+  }
+};
 // Pagination functions
 const nextPage = () => {
   if (currentPage.value < totalPages.value) currentPage.value++;

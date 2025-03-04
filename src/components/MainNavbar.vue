@@ -14,16 +14,17 @@
       <img src="../assets/pics/logo.png" alt="Logo" class="h-12 w-auto" />
     </div>
     
-    
     <!-- Navigation Links -->
     <div>
       <ul class="hidden md:flex gap-13 mt-2 text-white font-bold">
         <li class="relative transition duration-300 cursor-pointer hover:text-[#DF3F2A] hover:shadow-[0_0_25px_2px] hover:rounded-full hover:shadow-[#33132A] before:absolute before:top-[-34px] before:left-0 before:w-full before:h-[8px] before:bg-[#DF3F2A] before:transition-all before:duration-300 before:ease-in-out before:scale-0 hover:before:scale-100">
           HOME
         </li>
-        <li class="relative transition duration-300 cursor-pointer hover:text-[#DF3F2A] hover:shadow-[0_0_25px_2px] hover:rounded-full hover:shadow-[#33132A] before:absolute before:top-[-34px] before:left-0 before:w-full before:h-[8px] before:bg-[#DF3F2A] before:transition-all before:duration-300 before:ease-in-out before:scale-0 hover:before:scale-100">
+        <router-link to="/discover_live" class="relative transition duration-300 cursor-pointer hover:text-[#DF3F2A] hover:shadow-[0_0_25px_2px] hover:rounded-full hover:shadow-[#33132A] before:absolute before:top-[-34px] before:left-0 before:w-full before:h-[8px] before:bg-[#DF3F2A] before:transition-all before:duration-300 before:ease-in-out before:scale-0 hover:before:scale-100"> DISCOVER LIVE</router-link>
+        <router-view></router-view>
+        <!-- <li class="relative transition duration-300 cursor-pointer hover:text-[#DF3F2A] hover:shadow-[0_0_25px_2px] hover:rounded-full hover:shadow-[#33132A] before:absolute before:top-[-34px] before:left-0 before:w-full before:h-[8px] before:bg-[#DF3F2A] before:transition-all before:duration-300 before:ease-in-out before:scale-0 hover:before:scale-100">
           DISCOVER LIVE
-        </li>
+        </li> -->
         <li class="relative transition duration-300 cursor-pointer hover:text-[#DF3F2A] hover:shadow-[0_0_25px_2px] hover:rounded-full hover:shadow-[#33132A] before:absolute before:top-[-34px] before:left-0 before:w-full before:h-[8px] before:bg-[#DF3F2A] before:transition-all before:duration-300 before:ease-in-out before:scale-0 hover:before:scale-100">
           CATEGORIES
         </li>
@@ -76,6 +77,12 @@
 </template>
 
 <script>
+import { createRouter, createWebHistory } from 'vue-router';
+
+const router= createRouter({
+  history:createWebHistory(),
+  routes:[]
+});
 export default {
   data() {
     return {

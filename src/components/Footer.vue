@@ -60,7 +60,7 @@
             <div class="flex items-center justify-center">
                 &copy; Copyrights, 2023 Fortnitedata.com
             </div>
-            <div class="flex sm:justify-center  flex-wrap gap-4 md:gap-5 lg:gap-6 text-xl md:text-2xl text-white cursor-pointer px-2">
+            <div class="flex justify-center flex-wrap gap-4 md:gap-5 lg:gap-6 text-xl md:text-2xl text-white cursor-pointer px-2">
             <div class="border-2 lg:px-3 rounded-full px-2 md:px-3 md:py-2 lg:p-2 border-[#3E344B] hover:text-[#DF3F2A] hover:shadow-[#DF3F2A] hover:shadow-[0_0_22px_0px]">
                 <i class="fa fa-twitter"></i>
             </div>
