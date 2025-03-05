@@ -15,7 +15,7 @@
             </div>
 
             <!-- Center Sections -->
-            <div class="flex sm:flex-row sm:justify-around flex-col pl-0 lg:gap-8 gap-8 mt-10 lg:mt-0 w-full lg:w-[40%]">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 pt-8 lg:pt-0">
                 <div class="flex flex-col gap-4">
                     <h2 class="text-lg font-semibold mb-4">EXPLORE</h2>
                     <ul class="space-y-2 list-disc list-inside  cursor-pointer">
@@ -26,7 +26,7 @@
                         <li class="text-gray-400 marker:text-[#D93E31] hover:text-[#D93E31]">Contact</li>
                     </ul>
                 </div>
-                <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-4 pt-8 sm:pt-0">
                     <h2 class="text-lg font-semibold mb-4">RESOURCES</h2>
                     <ul class="space-y-2 list-disc list-inside cursor-pointer">
                         <li class="text-gray-400 marker:text-[#D93E31] hover:text-[#D93E31]">News & Updates</li>
@@ -36,10 +36,9 @@
                         <li class="text-gray-400 marker:text-[#D93E31] hover:text-[#D93E31]">Skin Databases</li>
                     </ul>
                 </div>
-            </div>
                 
                 <!-- Right Section -->
-                <div class="mt-8 lg:mt-0 flex flex-col md:justify-start gap-7 w-full lg:w-[25%]">
+                <div class="sm:pt-8 pt-8 lg:pt-0 flex flex-col justify-start gap-7 w-full">
                     <div>
                         <p class="text-gray-400 mb-2">Phone</p>
                         <p class="font-bold">+1 234 5678 910</p>
@@ -52,6 +51,7 @@
                         <p class="text-gray-400 mb-2">Email Address</p>
                         <p class="font-bold break-words lg:max-w-[85%]">NEEDHELP@FORTNITEDATA.COM</p>
                     </div>
+                </div>
             </div>
         </div>
 
@@ -60,7 +60,7 @@
             <div class="flex items-center justify-center">
                 &copy; Copyrights, 2023 Fortnitedata.com
             </div>
-            <div class="flex justify-center flex-wrap gap-4 md:gap-5 lg:gap-6 text-xl md:text-2xl text-white cursor-pointer px-2">
+            <div class="flex sm:justify-center justify-center flex-wrap gap-4 md:gap-5 lg:gap-6 text-xl md:text-2xl text-white cursor-pointer px-2">
             <div class="border-2 lg:px-3 rounded-full px-2 md:px-3 md:py-2 lg:p-2 border-[#3E344B] hover:text-[#DF3F2A] hover:shadow-[#DF3F2A] hover:shadow-[0_0_22px_0px]">
                 <i class="fa fa-twitter"></i>
             </div>
@@ -78,16 +78,7 @@
     </div>
 </template>
 <style scoped>
-  /* .trapezoid {
-  position: relative;
-  width: full; 
-  height: 70px; 
-  clip-path: polygon(10% 10%, 100% 0%, 85% 100%, 15% 100%);
-  display: flex;
-  border-color: #3E344B;
-  align-items: center;
-  justify-content: center;
-} */
+  
  @media screen and (min-width: 1024px) and (max-width: 1100px) {
     .email{
      width: 80%;

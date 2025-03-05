@@ -9,6 +9,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 const router = createRouter({
   history: createWebHistory(), // This is important for history mode
   routes: [
+    //   { path: '/', component: App },
     { path: '/discover_live', component: AboutPage },
     // Uncomment or add more routes as needed
     // { path: '/formcom', component: FormCom }

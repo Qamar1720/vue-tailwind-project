@@ -1,35 +1,74 @@
 <template>
   <div>
-    <!-- Only render this if the route is not /discover_live -->
-    <div v-if="$route.path !== '/discover_live'">
-      <HeaderNavbar />
-      <MainNavbar />
-      <MainBodyCards />
-      <MainGames />
-      <!-- <Footer/> -->
+    <!-- Always render the Navbars -->
+    <HeaderNavbar />
+    <MainNavbar />
+
+    <!-- Show components only when 'home' is active -->
+    <div v-if="activeSection === 'home'">
+      <SampleCom/>
+      <!-- <MainDetails/> -->
+      <!-- <MainBodyCards /> -->
+      <Footer />
+      <!-- <Footer /> -->
     </div>
 
-    <!-- Render AboutPage only when route is /discover_live -->
-    <router-view />
+    <!-- Show AboutPage only when 'discoverLive' is active -->
+    <div v-if="activeSection === 'discoverLive'">
+      <AboutPage />
+    </div>
+
+    <!-- Render other pages via router only when 'home' is active -->
+    <div v-if="activeSection === 'home'">
+      <router-view />
+    </div>
   </div>
 </template>
 
 <script>
-import HeaderNavbar from './components/HeaderNavbar.vue'
-import MainNavbar from './components/MainNavbar.vue'
-// import Footer from './components/Footer.vue'
-import MainGames from './components/MainGames.vue'
-import MainBodyCards from './components/MainBodyCards.vue'
-import AboutPage from './components/AboutPage.vue'
+import { watch } from "vue";
+import { useRoute } from "vue-router";
+import HeaderNavbar from "./components/HeaderNavbar.vue";
+import MainNavbar from "./components/MainNavbar.vue";
+// import MainBodyCards from "./components/MainBodyCards.vue";
+import MainDetails from "./components/MainDetails.vue";
+import SampleCom from "./components/SampleCom.vue";
+import Footer from "./components/Footer.vue";
+import AboutPage from "./components/AboutPage.vue";
 
 export default {
   components: {
     HeaderNavbar,
     MainNavbar,
-    MainGames,
-    MainBodyCards,
-    // Footer,
-    AboutPage
-  }
-}
+    // MainBodyCards,
+    MainDetails,
+    SampleCom,
+    Footer,
+    AboutPage,
+  },
+  data() {
+    return {
+      activeSection: "home", // Default section
+    };
+  },
+  methods: {
+    setActive(section) {
+      this.activeSection = section;
+    },
+  },
+  mounted() {
+    // Watch route changes and update activeSection
+    this.$watch(
+      () => this.$route.path,
+      (newPath) => {
+        if (newPath === "/discover_live") {
+          this.activeSection = "discoverLive";
+        } else {
+          this.activeSection = "home";
+        }
+      },
+      { immediate: true }
+    );
+  },
+};
 </script>
