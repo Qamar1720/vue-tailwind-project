@@ -78,6 +78,17 @@
     </div>
 </template>
 <style scoped>
+
+.trapezoid {
+  width: full; 
+  height: 70px; 
+  clip-path: polygon(3% 0%, 100% 0%,100% 100%, 0% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
   
  @media screen and (min-width: 1024px) and (max-width: 1100px) {
     .email{

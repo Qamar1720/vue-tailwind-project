@@ -7,11 +7,11 @@
     <p v-if="error" class="text-red-500">{{ error }}</p>
 
     <!-- Game List -->
-    <div class="flex sm:flex-row flex-col gap-4 max-w-[1440px] mx-auto">
-      <h1 class="text-3xl font-bold max-w-[1440px] mx-auto w-full">
+    <div class="flex sm:flex-row flex-col gap-4 max-w-[1440px] mx-auto pt-24">
+      <h1 class="text-3xl font-bold max-w-[1440px] mx-auto w-full pb-5">
         Latest Maps
       </h1>
-      <div class="flex relative">
+      <div class="flex relative pb-5">
         <input type="text" placeholder="Sort by Top Concurrent" class="border p-2"/>
         <i class="fa fa-caret-down absolute left-58 top-3"></i>
       </div>

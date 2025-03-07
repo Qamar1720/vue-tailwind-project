@@ -1,116 +1,288 @@
 <template>
-    <div class="bg-[#1A0B2E] flex flex-between text-white px-8 w-full">
-        <div class=" max-w-[1440px] w-full mx-auto">
-            <div class="flex flex-col gap-4">
-                <h2 class="text-[#E0DAE2] text-2xl font-bold">explore and discover</h2>
-                <h2 class="text-[#C93828] font-bold text-4xl pb-4">New Maps, Creatores & Experiences</h2>
-            </div>
-                <!-- Center Sections -->
-                 <!-- Loading Indicator -->
-                <p v-if="loading" class="text-gray-400">Loading games...</p>
+  <div class="bg-[#1A0B2E] flex flex-between text-white px-8 pt-9 w-full">
+    <div class="max-w-[1440px] w-full mx-auto">
+      <div class="flex flex-col gap-4">
+        <h2 class="text-[#E0DAE2] text-2xl font-bold">explore and discover</h2>
+        <h2 class="text-[#C93828] font-bold text-4xl pb-4">
+          New Maps, Creatores & Experiences
+        </h2>
+      </div>
+      <!-- Loading Indicator -->
+      <p v-if="loading" class="text-gray-400">Loading games...</p>
 
-                <!-- Error Message -->
-                <p v-if="error" class="text-red-500">{{ error }}</p>
+      <!-- Error Message -->
+      <p v-if="error" class="text-red-500">{{ error }}</p>
 
-                <!-- Main Games Details -->
-                <div class="flex flex-col md:flex-row pt-8 lg:pt-0 bg-[#1A0B2E]">
-                <div class="flex gap-4 w-[75%]">
-                    <div>
-                        <div>
-                            <div v-for="game in games"
-                                    :key="game.id"
-                                    class="pb-6 mt-2 rounded-lg shadow-md bg-[#1A0B2E] hover:transition-all hover:duration-300 ease-in-out border-white py-3">
-                                <div class="flex">
-                                <!-- Trapezoid Shape -->
-                                <!-- <div class="w-full flex justify-center">
-                                    <div class="trapezoid flex items-center px-4 py-2 text-white text-xl font-bold">
-                                        <i class="fa fa-link mr-1 rotate-810"></i> 01234-5678-4321
-                                    </div>
-                                </div> -->
-                                <img
-                                    :src="game.background_image"
-                                    alt="Game Image"
-                                    class="h-16 object-cover w-20 "
-                                />
-                                <div class="flex gap-4 text-white items-center justify-center">
-                                    <div>
-                                        <h2 class="text-xl md:text-2xl font-bold h-[40px] truncate">
-                                            {{ game.name }}
-                                        </h2>
-                                    </div>
-                                    <div>
-                                        <h2 class="text-xl md:text-2xl border font-bold">
-                                            By Epic
-                                        </h2>
-                                    </div>
-                                    <div>
-                                        <h2 class="text-xl md:text-2xl font-bold h-[40px] truncate">
-                                            {{ game.released }}
-                                        </h2>
-                                    </div>
-                                    <div>
-                                        <h2 class="text-xl md:text-2xl font-bold h-[40px] truncate">
-                                            {{ game.ratings_count }}
-                                        </h2>
-                                    </div>
-
-                                </div>
-                                    
-                                    <!-- <p class="text-sm md:text-lg lg:text-xl text-gray-300 font-bold">
-                                    Released: {{ game.released }}
-                                    </p> -->
-                            </div>
-                        </div>
-                    </div>
+      <!-- Main Div  -->
+      <div class="flex xl:flex-row flex-col lg:gap-0 gap-8 cardssetting">
+        <div v-if="!loading && !error" class="pt-0 flex flex-col">
+          <!-- Main Games Details -->
+          <div
+            class="lg:w-[100%] border border-[#362943] overflow-x-auto overflow-y-scroll h-96 scrollbar-custom"
+          >
+            <div class="flex flex-col gap-x-4">
+              <div
+                v-for="(game, index) in games"
+                :key="index"
+                class="min-w-[900px] flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943]"
+              >
+                <div class="flex items-center gap-5">
+                  <span
+                    class="trapezoid text-xl font-bold text-[#E0DAE2] -ml-4"
+                    >{{ index + 1 }}</span
+                  >
+                  <img
+                    :src="game.background_image"
+                    alt="Game Image"
+                    class="h-16 w-20 object-cover"
+                  />
+                  <h2 class="text-xl md:text-2xl font-bold uppercase truncate">
+                    {{ game.name }}
+                  </h2>
+                  <span class="border px-3 py-1 border-[#3C1831] text-sm"
+                    >BY EPIC</span
+                  >
                 </div>
-                <div class="flex flex-col gap-4 pt-8 sm:pt-0 w-[25%] ">
-                    <h2 class="text-lg font-semibold mb-4">RESOURCES</h2>
-                    <ul class="space-y-2 list-disc list-inside cursor-pointer">
-                        <li class="text-gray-400 marker:text-[#D93E31] hover:text-[#D93E31]">News & Updates</li>
-                        <li class="text-gray-400 marker:text-[#D93E31] hover:text-[#D93E31]">Top Studios</li>
-                        <li class="text-gray-400 marker:text-[#D93E31] hover:text-[#D93E31]">Top Developers</li>
-                        <li class="text-gray-400 marker:text-[#D93E31] hover:text-[#D93E31]">Event Calendars</li>
-                        <li class="text-gray-400 marker:text-[#D93E31] hover:text-[#D93E31]">Skin Databases</li>
-                    </ul>
-                </div>                
-            </div>                
-        </div>                
-        </div>                
+                <div class="flex gap-8">
+                  <h2 class="text-xl md:text-2xl font-bold">
+                    {{ game.ratings_count.toLocaleString() }}
+                  </h2>
+                  <h2 class="text-xl md:text-2xl font-bold text-[#C93828]">
+                    {{ game.ratings_count.toLocaleString() }}
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Top Right Div -->
+        <div class="xl:w-[34%] w-[100%] xl:ml-8 border-[#3E344B] border-2 xl:mt-0 mt-8 rightbar">
+          <!-- Buttons for switching content -->
+          <div
+            class="flex flex-col sm:flex-row gap-3 justify-around text-lg border-[#3E344B] border-2 pt-8 pb-3"
+          >
+            <button
+              @click="selectedTab = 'developers'"
+              :class="
+                selectedTab === 'developers'
+                  ? 'text-white cursor-pointer'
+                  : 'text-[#3A3144] cursor-pointer'
+              "
+              class="uppercase font-bold"
+            >
+              Top Developers
+            </button>
+            <button
+              @click="selectedTab = 'studios'"
+              :class="
+                selectedTab === 'studios'
+                  ? 'text-white cursor-pointer'
+                  : 'text-[#3A3144] cursor-pointer'
+              "
+              class="uppercase font-bold hover:text-[#3A3144]"
+            >
+              Top Studios
+            </button>
+          </div>
+
+          <!-- Conditional Rendering of Content -->
+          <div class="w-full">
+            <!-- Developers List -->
+            <div v-if="selectedTab === 'developers'">
+              <div
+                v-for="(game, index) in games.slice(0,5)"
+                :key="index"
+                class="flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943] w-full"
+              >
+                <div class="w-full xl:min-w-[210px] mx-auto">
+                  <div class="flex gap-10 px-4">
+                    <img
+                    :src="game.background_image"
+                    alt="Game Image"
+                    class="h-22 w-22 md:h-26 md:w-26 object-cover"
+                    />
+                    <div class="flex flex-col gap-2 truncate w-[160px] sm:w-[290px] md:w-full xl:w-[290px] overflow-x-auto">
+                      <span class="trapezoid2 text-md md:text-xl font-bold text-[#E0DAE2]"
+                      ># {{ index + 1 }}</span
+                      >
+                      <h2 class="text-sm md:text-xl font-bold uppercase truncate namedesign">
+                        {{ game.name }}
+                      </h2>
+                      <h2 class="text-sm md:text-xl font-bold uppercase">
+                        <i class="fa fa-play"></i> {{ game.playtime }}B
+                      </h2>
+                    </div>
+                  </div>
+                  <hr class="border-t hidden sm:flex mt-4 sm:w-[410px] ml-5 border-[#362943] transition-all duration-300 group-hover:opacity-0">
+                </div>
+              </div>
+            </div>
+            
+            <!-- Studios List -->
+              <div v-if="selectedTab === 'studios'">
+                <p v-if="loading" class="text-white">Loading...</p>
+                <p v-if="error" class="text-red-500">{{ error }}</p>
+                <div
+                v-for="(studio, index) in studios.slice(0, 5)"
+                :key="index"
+                class="flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943]"
+              >
+              <div class="flex gap-10 px-4">
+                <img
+                :src="studio.image"
+                alt="Studio Image"
+                class="h-22 w-22 md:h-26 md:w-26 object-cover"
+                />
+                <div class="flex flex-col gap-2 truncate w-[100px] sm:w-[290px] overflow-x-auto">
+                  <span class="trapezoid2 text-md md:text-xl font-bold text-[#E0DAE2]"
+                  ># {{ index + 1 }}</span
+                  >
+                  <h2 class="text-md md:text-xl font-bold uppercase truncate">
+                    {{ studio.name }}
+                  </h2>
+                  <h2 class="text-md md:text-xl font-bold uppercase">
+                    <i class="fa fa-play"></i> {{ studio.playtime}}B
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </template>
 <script setup>
-    import {ref, onMounted} from "vue"
+import { ref, onMounted } from "vue";
 
-    const API_KEY='20ab3549926347d0ae7a343a896a4973'
-    const games= ref([])
-    const loading= ref([true])
-    const error= ref([null])
+const selectedTab= ref('developers')
+const API_KEY = "20ab3549926347d0ae7a343a896a4973";
+const games = ref([]);
+const developers = ref([]);
+const studios = ref([]);
 
-    //Fetch Games from API
-    const fetchGames = async () => {
-        try{
-            const response = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}`);
-            if(!response.ok) throw new Error('Failed to fetch Data');
-            const data = await response.json();
-            games.value = data.results; //games data
-        } catch(err){
-            error.value= err.message; //games error
-        } finally{
-            loading.value= false;
-        }
-    }
-    onMounted(fetchGames);
+const errorGames = ref(null);
+const errorDevelopers = ref(null);
+const errorStudios = ref(null);
+
+const loadingGames = ref(true);
+const loadingDevelopers = ref(true);
+const loadingStudio = ref(true);
+
+const fetchGames = async () => {
+  try {
+    const response = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}`);
+    if (!response.ok) throw new Error("Failed to fetch games data");
+    const data = await response.json();
+    games.value = data.results || [];
+  } catch (err) {
+    errorGames.value = err.message;
+  } finally {
+    loadingGames.value = false;
+  }
+};
+
+const fetchDevelopers = async () => {
+  try {
+    const response = await fetch(`https://api.rawg.io/api/developers?key=${API_KEY}`);
+    if (!response.ok) throw new Error("Failed to fetch developers data");
+    const data = await response.json();
+    developers.value = data.results || [];
+  } catch (err) {
+    errorDevelopers.value = err.message;
+  } finally {
+    loadingDevelopers.value = false;
+  }
+};
+
+const fetchStudiodata = async (gamePk) => {
+  try {
+    const response = await fetch(`https://api.rawg.io/api/games/${gamePk}/game-series?key=${API_KEY}`);
+    if (!response.ok) throw new Error("Failed to fetch Studio data");
+    const data = await response.json();
+    studios.value = data.results || [];
+  } catch (err) {
+    errorStudios.value = err.message;
+  } finally {
+    loadingStudio.value = false;
+  }
+};
+
+onMounted(async () => {
+  await fetchGames();
+  await fetchDevelopers();
+
+  if (games.value.length > 0) {
+    fetchStudiodata(games.value[0].id);
+  }
+});
+
 
 </script>
 
 <style scoped>
-  .trapezoid {
-  width: full; 
-  height: 70px; 
-  clip-path: polygon(10% 10%, 100% 0%, 85% 100%, 15% 100%);
+.trapezoid {
+  width: 34px; /* Adjust width as needed */
+  height: 30px; /* Adjust height as needed */
+  background-color: #3e344b; /* Adjust background color */
+  clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%);
   display: flex;
-  border-color: #3E344B;
   align-items: center;
   justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+.trapezoid2 {
+  width: 55px; /* Adjust width as needed */
+  height: 30px; /* Adjust height as needed */
+  background-color: #d83e31; /* Adjust background color */
+  clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 0% 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+/* Custom scrollbar styles */
+.scrollbar-custom::-webkit-scrollbar {
+  width: 14px; /* Total scrollbar width */
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #332640; /* Track color */
+  border-radius: 10px; /* Rounded track */
+  padding: 3px; /* This won't work directly but keeps consistency */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: #493d55; /*Track Color */
+  border-radius: 8px; /* Rounded edges */
+  width: 8px; /* Make thumb smaller than track to simulate padding */
+  margin: 3px; /* Creates spacing effect */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+  background: #493d55; /* Color on hover */
+}
+
+@media screen and (min-width: 360px) and (max-width: 510px) {
+  .namedesign{
+    overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  }
+}
+@media screen and (min-width: 1280px) and (max-width: 1450px) {
+  .cardssetting{
+  display: flex;
+  flex-direction: column;
+  }
+  .rightbar{
+    width: 100%;
+    margin-left: 0;
+    margin-top: 3%;
+  }
 }
 </style>
