@@ -12,10 +12,12 @@
       <Footer />
       <!-- <Footer /> -->
     </div>
-
+    
     <!-- Show AboutPage only when 'discoverLive' is active -->
     <div v-if="activeSection === 'discoverLive'">
       <NumericGameCard/>
+      <NumericGamesCard2/>
+      <Footer />
     </div>
 
     <!-- Render other pages via router only when 'home' is active -->
@@ -35,6 +37,7 @@ import MainDetails from "./components/MainDetails.vue";
 import Footer from "./components/Footer.vue";
 import AboutPage from "./components/AboutPage.vue";
 import NumericGameCard from "./components/DiscoverLivePage/NumericGameCard.vue";
+import NumericGamesCard2 from "./components/DiscoverLivePage/NumericGamesCard2.vue";
 
 export default {
   components: {
@@ -43,6 +46,7 @@ export default {
     MainBodyCards,
     // SampleCom,
     NumericGameCard,
+    NumericGamesCard2,
     MainDetails,
     Footer,
     AboutPage,

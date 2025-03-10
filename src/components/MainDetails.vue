@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#1A0B2E] flex flex-between text-white px-8 pt-9 w-full">
+  <div class="bg-[#1A0B2E] flex flex-between text-white px-8 pb-30 w-full">
     <div class="max-w-[1440px] w-full mx-auto">
       <div class="flex flex-col gap-4">
         <h2 class="text-[#E0DAE2] text-2xl font-bold">explore and discover</h2>
@@ -67,7 +67,7 @@
               :class="
                 selectedTab === 'developers'
                   ? 'text-white cursor-pointer'
-                  : 'text-[#3A3144] cursor-pointer'
+                  : 'text-[#3A3144] hover:text-white cursor-pointer'
               "
               class="uppercase font-bold"
             >
@@ -78,7 +78,7 @@
               :class="
                 selectedTab === 'studios'
                   ? 'text-white cursor-pointer'
-                  : 'text-[#3A3144] cursor-pointer'
+                  : 'text-[#3A3144] hover:text-white cursor-pointer'
               "
               class="uppercase font-bold hover:text-[#3A3144]"
             >
@@ -126,28 +126,30 @@
                 <div
                 v-for="(studio, index) in studios.slice(0, 5)"
                 :key="index"
-                class="flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943]"
-              >
-              <div class="flex gap-10 px-4">
-                <img
-                :src="studio.image"
-                alt="Studio Image"
-                class="h-22 w-22 md:h-26 md:w-26 object-cover"
-                />
-                <div class="flex flex-col gap-2 truncate w-[100px] sm:w-[290px] overflow-x-auto">
-                  <span class="trapezoid2 text-md md:text-xl font-bold text-[#E0DAE2]"
-                  ># {{ index + 1 }}</span
-                  >
-                  <h2 class="text-md md:text-xl font-bold uppercase truncate">
-                    {{ studio.name }}
-                  </h2>
-                  <h2 class="text-md md:text-xl font-bold uppercase">
-                    <i class="fa fa-play"></i> {{ studio.playtime}}B
-                  </h2>
+                class="flex flex-col items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943]"
+                >
+                <div class="flex gap-10 px-4">
+                  <img
+                  :src="studio.background_image"
+                  alt="Studio Image"
+                  class="h-22 w-22 md:h-26 md:w-26 object-cover"
+                  />
+                  <!-- <h6>image: {{ studio.background_image }}</h6> -->
+                  <div class="flex flex-col gap-2 truncate w-[100px] sm:w-[290px] overflow-x-auto">
+                    <span class="trapezoid2 text-md md:text-xl font-bold text-[#E0DAE2]"
+                    ># {{ index + 1 }}</span
+                    >
+                    <h2 class="text-md md:text-xl font-bold uppercase truncate">
+                      {{ studio.name }}
+                    </h2>
+                    <h2 class="text-md md:text-xl font-bold uppercase">
+                      <i class="fa fa-play"></i> {{ studio.playtime}}B
+                    </h2>
+                  </div>
                 </div>
+                <hr class="border-t hidden sm:flex mt-4 sm:w-[410px] ml-5 border-[#362943] transition-all duration-300 group-hover:opacity-0">
               </div>
             </div>
-          </div>
           </div>
         </div>
       </div>

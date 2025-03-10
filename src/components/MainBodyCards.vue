@@ -12,19 +12,23 @@
         Latest Maps
       </h1>
       <div class="flex relative pb-5">
-        <input type="text" placeholder="Sort by Top Concurrent" class="border p-2"/>
+        <input
+          type="text"
+          placeholder="Sort by Top Concurrent"
+          class="border p-2"
+        />
         <i class="fa fa-caret-down absolute left-58 top-3"></i>
       </div>
     </div>
     <div
-      v-if="paginatedGames.length"
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-2 max-w-[1440px] mx-auto w-full cursor-pointer"
-    >
-      <div
-        v-for="game in paginatedGames"
-        :key="game.id"
-        class="pb-6 mt-2 rounded-lg shadow-md text-black bg-[#F5F5F5] hover:bg-white hover:shadow-gray-400 hover:shadow-[0px_0px_15px_2px] hover:transition-all hover:duration-300 ease-in-out min-h-[400px] group"
-      >
+  v-if="paginatedGames && paginatedGames.length"
+  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-2 max-w-[1440px] mx-auto w-full cursor-pointer"
+>
+  <div
+    v-for="game in paginatedGames"
+    :key="game.id"
+    class="pb-6 mt-2 rounded-lg shadow-md text-black bg-[#F5F5F5] hover:bg-white hover:shadow-gray-400 hover:shadow-[0px_0px_15px_2px] hover:transition-all hover:duration-300 ease-in-out min-h-[400px] group"
+  >
         <div class="relative">
           <img
             :src="game.background_image"
@@ -48,7 +52,7 @@
             >
           </i>
           <div class="flex flex-col gap-0">
-            <h2 class="text-xl md:text-2xl  font-bold h-[40px] truncate">
+            <h2 class="text-xl md:text-2xl font-bold h-[40px] truncate">
               {{ game.name }}
             </h2>
             <p class="text-sm md:text-lg lg:text-xl text-gray-300 font-bold">
@@ -58,10 +62,14 @@
 
           <div class="py-4">
             <!-- Line above button -->
-            <hr class="border-t w-full border-white transition-all duration-300 group-hover:opacity-0">
-            
+            <hr
+              class="border-t w-full border-white transition-all duration-300 group-hover:opacity-0"
+            />
+
             <!-- Line above button (hover effect) -->
-            <hr class="border-t w-full border-gray-400 opacity-0 transition-all duration-300 group-hover:opacity-100">
+            <hr
+              class="border-t w-full border-gray-400 opacity-0 transition-all duration-300 group-hover:opacity-100"
+            />
           </div>
 
           <!-- Icons with playlist button -->
@@ -99,25 +107,17 @@
       </button>
 
       <!-- Page Numbers -->
-      <template v-for="(page) in displayedPages" :key="page">
-      <button
-        v-if="page !== '...' "
-        @click="currentPage = page"
-        :class="[
-          'px-4 py-2 rounded-full',
-          currentPage === page ? 'bg-red-500 text-white' : 'bg-gray-200',
-        ]"
-      >
-        {{ page }}
-      </button>
-      <button
-        v-if="page === '...' "
-        @click="showMorePages"
-        class="px-4 py-2 rounded-full bg-gray-200 flex items-center justify-center"
-      >
-        ...
-      </button>
-    </template>
+      <template v-for="page in displayedPages" :key="page">
+        <button
+          @click="handlePageClick(page)"
+          :class="[
+            'px-4 py-2 rounded-full',
+            currentPage === page ? 'bg-red-500 text-white' : 'bg-gray-200',
+          ]"
+        >
+          {{ page }}
+        </button>
+      </template>
 
       <!-- Next Button -->
       <button
@@ -142,7 +142,6 @@ const currentPage = ref(1);
 const itemsPerPage = 12;
 const page_size = 100;
 
-
 // Fetch games from the API
 const fetchGames = async () => {
   try {
@@ -160,45 +159,41 @@ const fetchGames = async () => {
   }
 };
 
-// Computed property for paginated games
+//total pages logic
+const totalPages = computed(() => Math.ceil((games.value?.length || 0) / itemsPerPage));
+
+// Compute paginated games (only items for the current page)
 const paginatedGames = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage;
   const end = start + itemsPerPage;
   return games.value.slice(start, end);
 });
 
-// Total number of pages
-const totalPages = computed(() => Math.ceil(games.value.length / itemsPerPage));
-
-// Computed property for the pages to display in pagination
+// Compute displayed pagination numbers
 const displayedPages = computed(() => {
   const pages = [];
-  
-  // Add the first 3 pages
-  for (let i = 1; i <= 3; i++) {
-    if (i <= totalPages.value) {
+
+  if (totalPages.value <= 3) {
+    for (let i = 1; i <= totalPages.value; i++) {
       pages.push(i);
     }
-  }
-
-  // Add ellipsis if there are more than 3 pages
-  if (totalPages.value > 3) {
-    pages.push('...');
+  } else {
+    if (currentPage.value === 1) {
+      pages.push(1, 2, 3);
+    } else if (currentPage.value === totalPages.value) {
+      pages.push(totalPages.value - 2, totalPages.value - 1, totalPages.value);
+    } else {
+      pages.push(
+        currentPage.value - 1,
+        currentPage.value,
+        currentPage.value + 1
+      );
+    }
   }
 
   return pages;
 });
 
-// Method to handle the page number click
-const handlePageClick = (page) => {
-  if (page === '...') {
-    // Logic to handle when ellipsis is clicked, can show more pages
-    // For simplicity, we will just go to the next page after 3
-    currentPage.value = 4; // You can adjust this logic as per your requirements
-  } else {
-    currentPage.value = page;
-  }
-};
 // Pagination functions
 const nextPage = () => {
   if (currentPage.value < totalPages.value) currentPage.value++;
@@ -208,10 +203,15 @@ const prevPage = () => {
   if (currentPage.value > 1) currentPage.value--;
 };
 
+// Handle page clicks
+const handlePageClick = (page) => {
+  currentPage.value = page;
+};
+
 // Fetch games when component mounts
 onMounted(fetchGames);
 </script>
-<style>
+<style scoped>
 .trapezoid {
   position: relative;
   width: 250px; /* Adjust width as needed */
