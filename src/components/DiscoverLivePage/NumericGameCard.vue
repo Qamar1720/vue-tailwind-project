@@ -2,7 +2,12 @@
   <div class="p-6 bg-[#1A0B2E] pb-24">
     <div class="w-full max-w-[1440px] mx-auto">
        <!-- Loading Indicator -->
-       <p v-if="loading" class="text-gray-400">Loading games...</p>
+    <div v-if="loading" class="flex justify-center items-center">
+    <svg class="w-8 h-8 animate-spin text-blue-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+    </svg>
+    </div>
        
        <!-- Error Message -->
        <p v-if="error" class="text-red-500">{{ error }}</p>
@@ -29,7 +34,7 @@
       <div
         v-for="game in games.slice(0, 6)"
         :key="game.id"
-        class="mt-2 shadow-md text-black bg-[#2F223E] min-h-[200px] group relative overflow-hidden rounded-lg"
+        class="mt-2 shadow-md text-black bg-[#2F223E] min-h-[200px] group relative overflow-hidden rounded-lg hover:shadow-gray-400 hover:shadow-[0px_0px_15px_2px] hover:transition-all hover:duration-300 ease-in-out"
       >
       <div class="relative">
         <!-- Game Image -->

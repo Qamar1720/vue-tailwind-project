@@ -3,4 +3,5 @@
 .body{
     font-family: 'Oswald';
     background: #000;
+    display: block;
 }

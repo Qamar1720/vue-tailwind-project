@@ -1,10 +1,15 @@
 <template>
   <div class="p-6">
     <!-- Loading Indicator -->
-    <p v-if="loading" class="text-gray-400">Loading games...</p>
+    <div v-if="loading" class="flex justify-center items-center">
+    <svg class="w-8 h-8 animate-spin text-blue-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+    </svg>
+    </div>
 
     <!-- Error Message -->
-    <p v-if="error" class="text-red-500">{{ error }}</p>
+    <p v-if="error" class="text-red-500 max-w-[1440px] mx-auto w-full">{{ error }}</p>
 
     <!-- Game List -->
     <div class="flex sm:flex-row flex-col gap-4 max-w-[1440px] mx-auto pt-24">

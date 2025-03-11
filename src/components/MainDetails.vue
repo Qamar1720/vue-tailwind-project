@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-[#1A0B2E] flex flex-between text-white px-8 pb-30 w-full">
+  <div class="bg-[#1A0B2E] flex flex-between text-white px-8 pb-30 w-full pt-30">
     <div class="max-w-[1440px] w-full mx-auto">
       <div class="flex flex-col gap-4">
         <h2 class="text-[#E0DAE2] text-2xl font-bold">explore and discover</h2>
@@ -8,7 +8,12 @@
         </h2>
       </div>
       <!-- Loading Indicator -->
-      <p v-if="loading" class="text-gray-400">Loading games...</p>
+    <div v-if="loading" class="flex justify-center items-center">
+    <svg class="w-8 h-8 animate-spin text-blue-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+    </svg>
+    </div>
 
       <!-- Error Message -->
       <p v-if="error" class="text-red-500">{{ error }}</p>
@@ -114,7 +119,7 @@
                       </h2>
                     </div>
                   </div>
-                  <hr class="border-t hidden sm:flex mt-4 sm:w-[410px] ml-5 border-[#362943] transition-all duration-300 group-hover:opacity-0">
+                  <hr class="border-t  mt-4 sm:w-[410px] ml-5 border-[#362943] transition-all duration-300 group-hover:opacity-0 lineincard">
                 </div>
               </div>
             </div>
@@ -126,28 +131,31 @@
                 <div
                 v-for="(studio, index) in studios.slice(0, 5)"
                 :key="index"
-                class="flex flex-col items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943]"
+                class="flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943] w-full"
                 >
-                <div class="flex gap-10 px-4">
-                  <img
-                  :src="studio.background_image"
-                  alt="Studio Image"
-                  class="h-22 w-22 md:h-26 md:w-26 object-cover"
-                  />
-                  <!-- <h6>image: {{ studio.background_image }}</h6> -->
-                  <div class="flex flex-col gap-2 truncate w-[100px] sm:w-[290px] overflow-x-auto">
-                    <span class="trapezoid2 text-md md:text-xl font-bold text-[#E0DAE2]"
-                    ># {{ index + 1 }}</span
-                    >
-                    <h2 class="text-md md:text-xl font-bold uppercase truncate">
-                      {{ studio.name }}
-                    </h2>
-                    <h2 class="text-md md:text-xl font-bold uppercase">
-                      <i class="fa fa-play"></i> {{ studio.playtime}}B
-                    </h2>
+                <div class="w-full xl:min-w-[210px] mx-auto">
+
+                  <div class="flex gap-10 px-4">
+                    <img
+                    :src="studio.background_image"
+                    alt="Studio Image"
+                    class="h-22 w-22 md:h-26 md:w-26 object-cover"
+                    />
+                    <!-- <h6>image: {{ studio.background_image }}</h6> -->
+                    <div class="flex flex-col gap-2 truncate w-[160px] sm:w-[290px] md:w-full xl:w-[290px] overflow-x-auto">
+                      <span class="trapezoid2 text-md md:text-xl font-bold text-[#E0DAE2]"
+                      ># {{ index + 1 }}</span
+                      >
+                      <h2 class="text-md md:text-xl font-bold uppercase truncate">
+                        {{ studio.name }}
+                      </h2>
+                      <h2 class="text-md md:text-xl font-bold uppercase">
+                        <i class="fa fa-play"></i> {{ studio.playtime}}B
+                      </h2>
+                    </div>
                   </div>
+                  <hr class="border-t flex mt-4 sm:w-[270px] sm:ml-5 lg:ml-0 border-[#362943] transition-all duration-300 group-hover:opacity-0 lineincard">
                 </div>
-                <hr class="border-t hidden sm:flex mt-4 sm:w-[410px] ml-5 border-[#362943] transition-all duration-300 group-hover:opacity-0">
               </div>
             </div>
           </div>
@@ -173,6 +181,7 @@ const loadingGames = ref(true);
 const loadingDevelopers = ref(true);
 const loadingStudio = ref(true);
 
+//Fetching Gaming data from API
 const fetchGames = async () => {
   try {
     const response = await fetch(`https://api.rawg.io/api/games?key=${API_KEY}`);
@@ -186,6 +195,7 @@ const fetchGames = async () => {
   }
 };
 
+//Fetching Developers data from API
 const fetchDevelopers = async () => {
   try {
     const response = await fetch(`https://api.rawg.io/api/developers?key=${API_KEY}`);
@@ -199,6 +209,7 @@ const fetchDevelopers = async () => {
   }
 };
 
+//Fetching Studio data from API
 const fetchStudiodata = async (gamePk) => {
   try {
     const response = await fetch(`https://api.rawg.io/api/games/${gamePk}/game-series?key=${API_KEY}`);
@@ -213,15 +224,13 @@ const fetchStudiodata = async (gamePk) => {
 };
 
 onMounted(async () => {
-  await fetchGames();
+await fetchGames();
   await fetchDevelopers();
 
   if (games.value.length > 0) {
     fetchStudiodata(games.value[0].id);
   }
 });
-
-
 </script>
 
 <style scoped>
@@ -271,20 +280,26 @@ onMounted(async () => {
 
 @media screen and (min-width: 360px) and (max-width: 510px) {
   .namedesign{
-    overflow: hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   }
 }
 @media screen and (min-width: 1280px) and (max-width: 1450px) {
   .cardssetting{
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
   }
   .rightbar{
     width: 100%;
     margin-left: 0;
     margin-top: 3%;
   }
+}
+@media screen and (min-width: 1280px) and (max-width: 1450px) {
+  .lineincard{
+    width: 100%;
+  }
+
 }
 </style>

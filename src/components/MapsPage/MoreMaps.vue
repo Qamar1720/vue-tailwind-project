@@ -1,35 +1,40 @@
 <template>
-    <div class="p-6 bg-white pb-30">
-        <div class="w-full max-w-[1440px] mx-auto">
-       <!-- Loading Indicator -->
-    <div v-if="loading" class="flex justify-center items-center">
-    <svg class="w-8 h-8 animate-spin text-blue-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-      <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
-    </svg>
-    </div>
-       
-       <!-- Error Message -->
-       <p v-if="error" class="text-red-500">{{ error }}</p>
+    <div class="p-6 bg-[#1A0B2E] pb-24">
+      <div class="w-full max-w-[1440px] mx-auto">
+         <!-- Loading Indicator -->
+      <div v-if="loading" class="flex justify-center items-center">
+      <svg class="w-8 h-8 animate-spin text-blue-600" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+      </svg>
       </div>
-        
+         
+         <!-- Error Message -->
+         <p v-if="error" class="text-red-500">{{ error }}</p>
+        </div>
+         
       <!-- Game List -->
       <div
         class="flex sm:flex-row flex-col justify-between max-w-[1440px] mx-auto pt-24"
       >
         <div
-          class="xl:text-3xl lg:text-lg md:text-md sm:text-sm font-bold pb-4 text-[#DB3F35]"
+          class="xl:text-3xl lg:text-lg md:text-md sm:text-sm font-bold pb-4 text-[#FDFDFB]"
         >
-          Popular Maps
+          More Maps by Adam Smith
+        </div>
+        <div
+          class="xl:text-xl lg:text-lg md:text-md sm:text-sm pb-4 text-[#CEA229]"
+        >
+          View All
         </div>
       </div>
       <div
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-2 max-w-[1440px] mx-auto w-full cursor-pointer"
       >
         <div
-          v-for="game in games.slice(10, 16)"
+          v-for="game in games.slice(0, 3)"
           :key="game.id"
-          class="mt-2 shadow-md text-black bg-[#2F223E] min-h-[200px] group relative overflow-hidden rounded-lg  hover:shadow-gray-700  hover:shadow-[0px_0px_15px_2px] hover:transition-all hover:duration-300 ease-in-out"
+          class="mt-2 shadow-md text-black bg-[#2F223E] min-h-[200px] group relative overflow-hidden rounded-lg hover:bg-[#a674de] hover:shadow-gray-400 hover:shadow-[0px_0px_15px_2px] hover:transition-all hover:duration-300 ease-in-out"
         >
         <div class="relative">
           <!-- Game Image -->
@@ -48,17 +53,7 @@
               <div
                 class="trapezoid absolute top-40 md:top-48 left-9 flex px-4 py-2 text-white text-xl font-bold"
               >
-                29546548
-              </div>
-  
-              <!-- Playtime & User Icon -->
-              <div
-                class="flex items-center space-x-2 absolute top-40 md:top-48 left-[80%] sm:left-[78%] md:left-[75%] xl:left-[80%]"
-              >
-                <i class="fa fa-user text-[#d93e31]" style="font-size: 30px"></i>
-                <p class="text-white text-lg font-bold" style="font-size: 30px">
-                  {{ game.playtime }}
-                </p>
+              <i class="fa fa-link mr-1 rotate-810"></i> 29546548
               </div>
             </div>
   

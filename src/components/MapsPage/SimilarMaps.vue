@@ -29,7 +29,7 @@
         <div
           v-for="game in games.slice(10, 16)"
           :key="game.id"
-          class="mt-2 shadow-md text-black bg-[#2F223E] min-h-[200px] group relative overflow-hidden rounded-lg  hover:shadow-gray-700  hover:shadow-[0px_0px_15px_2px] hover:transition-all hover:duration-300 ease-in-out"
+          class="mt-2 shadow-md text-black bg-[#2F223E] min-h-[200px] group relative overflow-hidden rounded-lg"
         >
         <div class="relative">
           <!-- Game Image -->
