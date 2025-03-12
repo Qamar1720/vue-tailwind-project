@@ -28,12 +28,15 @@
         View All
       </div>
     </div>
+    <!-- Main Card Div -->
     <div
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-2 max-w-[1440px] mx-auto w-full cursor-pointer"
     >
+    <!-- Whole Card Design  -->
       <div
         v-for="game in games.slice(0, 6)"
         :key="game.id"
+        @click="navigateToGame(game.id)"
         class="mt-2 shadow-md text-black bg-[#2F223E] min-h-[200px] group relative overflow-hidden rounded-lg hover:shadow-gray-400 hover:shadow-[0px_0px_15px_2px] hover:transition-all hover:duration-300 ease-in-out"
       >
       <div class="relative">
@@ -58,7 +61,7 @@
 
             <!-- Playtime & User Icon -->
             <div
-              class="flex items-center space-x-2 absolute top-40 md:top-48 left-[80%] sm:left-[75%] md:left-[70%] xl:left-[80%]"
+              class="flex items-center space-x-2 absolute top-40 md:top-48 left-[76%] sm:left-[75%] md:left-[70%] xl:left-[80%]"
             >
               <i class="fa fa-user text-[#d93e31]" style="font-size: 30px"></i>
               <p class="text-white text-lg font-bold" style="font-size: 30px">
@@ -93,6 +96,8 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import router from "../../main";
+import { useRoute } from "vue-router";
 
 const API_KEY = "20ab3549926347d0ae7a343a896a4973"; // API key
 const games = ref([]);
@@ -114,6 +119,10 @@ const fetchGames = async () => {
   } finally {
     loading.value = false;
   }
+};
+
+const navigateToGame = (gameId) => {
+  router.push(`/game/${gameId}`); // Redirect to dynamic route
 };
 
 // Fetch games when component mounts

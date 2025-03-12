@@ -21,20 +21,24 @@
           type="text"
           placeholder="Sort by Top Concurrent"
           class="border p-2"
-        />
-        <i class="fa fa-caret-down absolute left-58 top-3"></i>
+          />
+          <i class="fa fa-caret-down absolute left-58 top-3"></i>
+        </div>
       </div>
-    </div>
+      <!-- Card pagination Control  -->
     <div
-  v-if="paginatedGames && paginatedGames.length"
-  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-2 max-w-[1440px] mx-auto w-full cursor-pointer"
->
+    v-if="paginatedGames && paginatedGames.length"
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-2 max-w-[1440px] mx-auto w-full cursor-pointer"
+    >
+    <!-- Game Data showing Cards -->
   <div
     v-for="game in paginatedGames"
     :key="game.id"
+    @click="navigateToGame(game.id)"
     class="pb-6 mt-2 rounded-lg shadow-md text-black bg-[#F5F5F5] hover:bg-white hover:shadow-gray-400 hover:shadow-[0px_0px_15px_2px] hover:transition-all hover:duration-300 ease-in-out min-h-[400px] group"
   >
         <div class="relative">
+          <!-- Card Image -->
           <img
             :src="game.background_image"
             alt="Game Image"
@@ -56,10 +60,12 @@
               >{{ game.rating }}k</span
             >
           </i>
+          <!-- Game Name -->
           <div class="flex flex-col gap-0">
             <h2 class="text-xl md:text-2xl font-bold h-[40px] truncate">
               {{ game.name }}
             </h2>
+            <!-- Game Releasing Year -->
             <p class="text-sm md:text-lg lg:text-xl text-gray-300 font-bold">
               Released: {{ game.released }}
             </p>
@@ -138,6 +144,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from "vue";
+import router from "../main";
 
 const API_KEY = "20ab3549926347d0ae7a343a896a4973"; // API key
 const games = ref([]);
@@ -163,7 +170,9 @@ const fetchGames = async () => {
     loading.value = false;
   }
 };
-
+const navigateToGame = (gameId) => {
+  router.push(`/game/${gameId}`); // Redirect to dynamic route
+};
 //total pages logic
 const totalPages = computed(() => Math.ceil((games.value?.length || 0) / itemsPerPage));
 

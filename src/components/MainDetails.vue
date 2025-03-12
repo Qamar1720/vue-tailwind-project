@@ -154,7 +154,7 @@
                       </h2>
                     </div>
                   </div>
-                  <hr class="border-t flex mt-4 sm:w-[270px] sm:ml-5 lg:ml-0 border-[#362943] transition-all duration-300 group-hover:opacity-0 lineincard">
+                  <hr class="border-t flex mt-4 sm:w-[410px] sm:ml-5 lg:ml-0 border-[#362943] transition-all duration-300 group-hover:opacity-0 lineincard">
                 </div>
               </div>
             </div>

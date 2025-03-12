@@ -51,15 +51,6 @@
                 29546548
               </div>
   
-              <!-- Playtime & User Icon -->
-              <div
-                class="flex items-center space-x-2 absolute top-40 md:top-48 left-[80%] sm:left-[78%] md:left-[75%] xl:left-[80%]"
-              >
-                <i class="fa fa-user text-[#d93e31]" style="font-size: 30px"></i>
-                <p class="text-white text-lg font-bold" style="font-size: 30px">
-                  {{ game.playtime }}
-                </p>
-              </div>
             </div>
   
             <!-- Game Title -->

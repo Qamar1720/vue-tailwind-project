@@ -1,19 +1,19 @@
 <template>
-  <!-- <h1 class="text-white text-center text-4xl font-bold p-10">
-  {{ $route.meta.title || "Discover Live" }}
-</h1> -->
-<NumericGameCard />
-<NumericGamesCard2 />
+  <ImageGalary/>
+  <MoreMaps/>
+  <SimilarMaps/>
 </template>
-
 <script>
-import NumericGameCard from "./NumericGameCard.vue";
-import NumericGamesCard2 from "./NumericGamesCard2.vue";
+  import ImageGalary from './ImageGalary.vue'
+  import MoreMaps from './MoreMaps.vue'
+  import SimilarMaps from './SimilarMaps.vue'
+import ImageGalaryVue from './ImageGalary.vue'
 
-export default {
-  components: {
-    NumericGameCard,
-    NumericGamesCard2,
-  },
-};
+  export default {
+    components:{
+      ImageGalary,
+      MoreMaps,
+      SimilarMaps
+    }
+  }
 </script>

@@ -4,21 +4,31 @@
     <div class="w-full flex min-w-full bg-[#1A0B2E] min-h-screen relative pt-8">
       <!-- Background Image -->
       <div
-        class="w-full bg-cover bg-center flex relative pt-8"
-        :class="responsiveHeight"
+        class="w-full min-h-screen bg-no-repeat bg-cover 2xl:bg-contain"
         :style="{ backgroundImage: `url(${navbarBgImage})` }"
       >
-
         <!-- Page Title -->
-        <div v-if="Array.isArray(title)" class="absolute text-center" :class="titlePosition">
-        <p v-for="(line, index) in title" :key="index" class="flex items-center justify-center">
-          <template v-if="line.highlight">
-            <span :class="line.class">{{ line.text.split(line.highlight)[0] }}</span>
-            <span :class="line.highlightClass">{{ line.highlight }}</span>
-          </template>
-          <span v-else :class="line.class">{{ line.text }}</span>
-        </p>
-      </div>
+        <div
+          v-if="Array.isArray(title)"
+          class="absolute"
+          :class="titlePosition"
+        >
+          <div class="w-full max-w-[1440px] mx-auto px-4">
+            <p
+              v-for="(line, index) in title"
+              :key="index"
+              class="flex justify-center md:justify-start"
+            >
+              <template v-if="line.highlight">
+                <span :class="line.class">{{
+                  line.text.split(line.highlight)[0]
+                }}</span>
+                <span :class="line.highlightClass">{{ line.highlight }}</span>
+              </template>
+              <span v-else :class="line.class">{{ line.text }}</span>
+            </p>
+          </div>
+        </div>
       </div>
 
       <!-- Navbar -->
@@ -34,10 +44,26 @@
         <div>
           <ul class="hidden md:flex gap-13 mt-2 text-white font-bold">
             <router-link to="/" :class="activeClass('/')">HOME</router-link>
-            <router-link to="/discover_live" :class="activeClass('/discover_live')">DISCOVER LIVE</router-link>
-            <router-link to="/categories" :class="activeClass('/categories')">CATEGORIES</router-link>
-            <li @click="navigateTo('consulting')" :class="activeClass('consulting')">CONSULTING</li>
-            <li @click="navigateTo('news')" :class="activeClass('news')">NEWS & UPDATES</li>
+            <router-link
+              to="/discover_live"
+              :class="activeClass('/discover_live')"
+              >DISCOVER LIVE</router-link
+            >
+            <li
+              @click="navigateTo('categories')"
+              :class="activeClass('categories')"
+            >
+              CATEGORIES
+            </li>
+            <li
+              @click="navigateTo('consulting')"
+              :class="activeClass('consulting')"
+            >
+              CONSULTING
+            </li>
+            <li @click="navigateTo('news')" :class="activeClass('news')">
+              NEWS & UPDATES
+            </li>
           </ul>
         </div>
 
@@ -46,7 +72,7 @@
           <i
             :class="[
               isMenuOpen ? 'fa fa-times' : 'fa fa-bars',
-              'cursor-pointer -mt-2'
+              'cursor-pointer -mt-2',
             ]"
             @click="toggleMenu"
           ></i>
@@ -66,8 +92,8 @@
           </ul>
         </div>
 
-         <!-- Social Media Icons -->
-         <div
+        <!-- Social Media Icons -->
+        <div
           class="hidden md:flex flex-wrap gap-4 md:gap-5 lg:gap-6 text-xl md:text-2xl text-white cursor-pointer px-2"
         >
           <div
@@ -109,19 +135,24 @@ export default {
     const router = useRouter();
     const isMenuOpen = ref(false);
 
-    const responsiveHeight = computed(() => 
-      "h-[80px] sm:h-[100px] md:h-[120px] lg:h-[140px] xl:h-[160px] 2xl:h-[180px]"
-    );
-
     // Get background image & text properties from route meta
     const navbarBgImage = computed(() => route.meta.navbarBgImage || "");
     const title = computed(() => route.meta.title || "");
-    const titlePosition = computed(() => route.meta.titlePosition || "top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2");
+    const titlePosition = computed(
+      () =>
+        route.meta.titlePosition ||
+        "top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+    );
+    const responsiveHeight = computed(
+      () =>
+        "h-[400px] w-[100px] sm:mb-0 sm:pb-0 md:h-[600px] md:mb-0 md:pb-0 lg:h-[750px] xl:h-[900px]"
+    );
 
-    const activeClass = computed(() => (path) =>
-      route.path === path
-        ? "text-[#DF3F2A] font-bold"
-        : "relative transition duration-300 cursor-pointer hover:text-[#DF3F2A] hover:shadow-[0_0_25px_2px] hover:rounded-full hover:shadow-[#33132A] before:absolute before:top-[-34px] before:left-0 before:w-full before:h-[8px] before:bg-[#DF3F2A] before:transition-all before:duration-300 before:ease-in-out before:scale-0 hover:before:scale-100"
+    const activeClass = computed(
+      () => (path) =>
+        route.path === path
+          ? "text-[#DF3F2A] font-bold"
+          : "relative transition duration-300 cursor-pointer hover:text-[#DF3F2A] hover:shadow-[0_0_25px_2px] hover:rounded-full hover:shadow-[#33132A] before:absolute before:top-[-34px] before:left-0 before:w-full before:h-[8px] before:bg-[#DF3F2A] before:transition-all before:duration-300 before:ease-in-out before:scale-0 hover:before:scale-100"
     );
 
     const navigateTo = (section) => {
@@ -133,7 +164,16 @@ export default {
       isMenuOpen.value = !isMenuOpen.value;
     };
 
-    return { activeClass, navigateTo, isMenuOpen, toggleMenu, navbarBgImage, title, titlePosition };
+    return {
+      activeClass,
+      navigateTo,
+      isMenuOpen,
+      toggleMenu,
+      navbarBgImage,
+      title,
+      titlePosition,
+      responsiveHeight,
+    };
   },
 };
 </script>
