@@ -28,117 +28,102 @@
       <!-- Error Message -->
       <p v-else-if="error" class="text-red-500">{{ error }}</p>
 
-      <!-- Game Details -->
-      <div v-else class="flex flex-col xl:flex-row gap-10">
-        <ImageCard/>
-        <!-- Image Div -->
-        <!-- <div class="bg-[#2E213B] p-3 flex justify-center xl:max-w-[900px] xl:mx-auto h-[220px] sm:h-[330px] object-cover w-full xl:w-[50%]">
-          <img
-            :src="selectedImage"
-            alt="Game Image"
-            class="w-full object-cover"
-          /> -->
+      <div v-else class="flex flex-col gap-4 lg:flex-row">
+        <!-- Image Details -->
+        <div class="flex flex-col xl:flex-row gap-10 w-full lg:w-[50%]">
+          <ImagesCard />
         </div>
+        
         <!-- Right Section Div -->
-        <div class="flex flex-col w-full xl:w-[50%]">
-          <div class="flex flex-col gap-3 xl:flex-row justify-between textdesign">
+        <div class="flex flex-col w-full lg:w-[50%] xl:w-[75%]">
+          <div class="flex flex-col gap-3 xl:flex-row justify-between">
             <h2 class="text-[#594D61] text-xl flex items-center mr-3">
               <!-- stars count -->
               <span class="pr-4">
-                <h2 class="text-white flex items-center mr-3 ">
-                  <!-- Generate filled stars based on the rating -->
-                  <span v-for="n in Math.round(game.rating)" :key="n">
+                <!-- <h2 class="text-white flex items-center mr-3">
+                  Filled stars -->
+                  <span v-for="n in Math.round(game?.rating || 0)" :key="n">
                     <i class="fa fa-star text-yellow-300"></i>
                   </span>
-
-                  <!-- Generate empty stars if needed -->
+                  
+                  <!-- Empty stars -->
                   <span
-                    v-for="n in game.rating_top - Math.round(game.rating)"
-                    :key="'empty-' + n"
+                  v-for="n in (game?.rating_top || 5) -
+                  Math.round(game?.rating || 0)"
+                  :key="'empty-' + n"
                   >
-                    <i class="fa fa-star text-gray-500"></i>
-                  </span>
-
-                  <!-- Show the rating count -->
-                  ({{ game.rating || 0 }} / {{ game.rating_top || 5 }})
-                </h2>
-              </span>
-              <!-- reviews number -->
-              ({{ game?.reviews_text_count || 0 }} reviews)
-            </h2>
-            <!-- Div of calender and google play  -->
-            <div
-              class="flex flex-col gap-3 sm:flex-row sm:gap-10 text-xl lg:items-center textdesign"
-            >
-              <!-- game date -->
-              <h2 class="text-[#594D61] xl:ml-4">
-                <i class="fa fa-calendar pr-2"></i>
-                {{
-                  game?.released
-                    ? moment(game.released).format("MMM  YY")
-                    : "N/A"
-                }}
-              </h2>
-              <!-- google play icon -->
-              <h2 class="text-[#594D61]">
-                <i class="fa fa-gamepad pr-2" style="font-size: x-large;"></i> Google Play
-              </h2>
-            </div>
-          </div>
-          <!-- game name -->
-          <h2 class="text-white text-3xl font-bold my-4 uppercase">
-            {{ game?.name || "Unknown Game" }}
+                  <i class="fa fa-star text-gray-500"></i>
+                </span>
+                ({{ game?.reviews_text_count || 0 }} reviews)
+                
+                <!-- Show the rating count -->
+                <!-- ({{ game?.rating || "N/A" }} / {{ game?.rating_top || 5 }})
+              </h2> -->
+            </span>
           </h2>
-          <!-- Creators Detail -->
-          <div class="flex gap-5">
-            <div>
-              <h2 v-if="developerName" class="text-white text-lg mt-1">
-                By <span class="text-[#E0BC30]">{{ developerName }} </span>
-              </h2>
-            </div>
-            <!-- follow button -->
-            <div class="flex items-center justify-center pt-0">
-              <h2
-                class="border border-[#594D61] text-[#594D61] py-0.5 w-fit px-3"
-              >
-                Follow
-              </h2>
-            </div>
-          </div>
-          <!-- description of the game -->
-          <ul
-            class="text-[#8D8793] my-4 font-bold list-disc list-outside pl-5 flex flex-col gap-3"
+          <!-- reviews number -->
+
+          <!-- Div of calender and google play -->
+          <div
+          class="flex gap-3 sm:flex-row sm:gap-10 text-xl"
           >
-            <li v-for="(point, index) in limitedDescription" :key="index">
-              {{ point }}
-            </li>
-          </ul>
-          <!-- number with shape -->
-          <div class="trapezoid2 text-lg pr-3">
-            <i class="fa fa-link mr-1 rotate-810"></i> 29546548
+            <!-- game date -->
+            <h2 class="text-[#594D61] ml-0 2xl:ml-4">
+              <i class="fa fa-calendar pr-2"></i>
+              {{
+                game?.released ? moment(game.released).format("MMM  YY") : "N/A"
+              }}
+            </h2>
+            <!-- google play icon -->
+            <h2 class="text-[#594D61]">
+              <i class="fa fa-gamepad pr-2" style="font-size: x-large"></i>
+              Google Play
+            </h2>
           </div>
         </div>
+        <!-- game name -->
+        <h2 class="text-white text-3xl font-bold my-4 uppercase">
+          {{ game?.name || "Unknown Game" }}
+        </h2>
+        <!-- Creators Detail -->
+        <div class="flex gap-5">
+          <div>
+            <h2 v-if="developerName" class="text-white text-lg mt-1">
+              By <span class="text-[#E0BC30]">{{ developerName }} </span>
+            </h2>
+          </div>
+          <!-- follow button -->
+          <div class="flex items-center justify-center pt-0">
+            <h2
+            class="border border-[#594D61] text-[#594D61] py-0.5 w-fit px-3"
+            >
+            Follow
+          </h2>
+        </div>
       </div>
-      <!-- Image Gallery 
-      <div class="flex flex-wrap justify-center sm:justify-start gap-3 pt-2 mb-0">
-    <img
-      v-for="(image, index) in fixedGallery"
-      :key="index"
-      :src="image.image"
-      alt="Game Screenshot"
-      class="w-38 h-24 sm:h-22 object-cover cursor-pointer border-2 border-transparent hover:border-red-500 bg-[#2E213B] p-0.5"
-      @click="selectedImage = image.image"
-    />
-  </div> -->
+      <!-- description of the game -->
+      <ul
+      class="text-[#8D8793] my-4 font-bold list-disc list-outside pl-5 flex flex-col gap-3 truncate"
+      >
+      <li v-for="(point, index) in limitedDescription" :key="index" >
+        {{ point }}
+      </li>
+    </ul>
+    <!-- number with shape -->
+    <div class="trapezoid2 text-lg pr-3">
+      <i class="fa fa-link mr-1 rotate-810"></i> 29546548
     </div>
-  <!-- </div> -->
+  </div>
+</div>
+</div>
+</div>
 </template>
 
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import moment from "moment";
 import { useRoute } from "vue-router";
-import ImageCard from '../ImagesCard.vue'
+import ImagesCard from "./ImagesCard.vue";
 
 const route = useRoute();
 const game = ref(null);
@@ -153,10 +138,11 @@ const limitedDescription = computed(() => {
   if (!game.value || !game.value.description_raw) return [];
 
   return game.value.description_raw
-    .split(". ") // Split by sentence
-    .slice(0, 3) // Take only the first 3 sentences
-    .map((sentence) => sentence.trim() + "."); // Ensure proper sentence formatting
+    .split(". ")
+    .slice(0, 3)
+    .map((sentence) => (sentence.length > 50 ? sentence.slice(0, 80) + "." : sentence.trim() + "."));
 });
+
 
 const fetchGameDetails = async () => {
   try {
@@ -168,7 +154,8 @@ const fetchGameDetails = async () => {
     const data = await response.json();
     game.value = data;
 
-    selectedImage.value = data.background_image || "https://via.placeholder.com/500";
+    selectedImage.value =
+      data.background_image || "https://via.placeholder.com/500";
 
     // Wait for screenshots API before setting fixedGallery
     await fetchScreenshots();
@@ -191,14 +178,13 @@ const fetchScreenshots = async () => {
       `https://api.rawg.io/api/games/${route.params.id}/screenshots?key=20ab3549926347d0ae7a343a896a4973`
     );
     if (!response.ok) throw new Error("Failed to fetch screenshots");
-    
+
     const data = await response.json();
     screenshots.value = data.results || [];
   } catch (err) {
     error.value = err.message;
   }
 };
-
 
 const fetchDevelopmentTeam = async () => {
   try {
@@ -234,12 +220,13 @@ onMounted(async () => {
   color: white;
   font-weight: bold;
 }
-@media screen and (min-width: 1280px) and (max-width: 1310px) {
+/* @media screen and (min-width: 1280px) and (max-width: 1310px) {
   .textdesign {
     display: flex;
     flex-direction: column;
+    text-align: left;
     margin-left: 0px;
     padding-left: 0px;
   }
-}
+} */
 </style>

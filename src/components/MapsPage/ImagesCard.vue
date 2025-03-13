@@ -1,26 +1,28 @@
 <template>
     <!-- Main Image -->
   <div
-    class="bg-[#2E213B] p-3 flex justify-center xl:max-w-[900px] xl:mx-auto h-[220px] sm:h-[330px] object-cover w-full xl:w-[50%]"
+    class="flex flex-col gap-2"
   >
-    <img :src="selectedImage" alt="Game Image" class="w-full object-cover" />
-  </div>
-  <!-- Image Gallery  -->
-  <div class="flex flex-wrap justify-center sm:justify-start gap-3 pt-2 mb-0">
-    <img
+    <!-- Image Div -->
+    <div class="bg-[#2E213B] xl:max-w-[900px]  h-[220px] sm:h-[300px] lg:h-[336px] xl:h-[300px] object-cover w-full p-2">
+      <img :src="selectedImage" alt="Game Image" class="w-full object-cover h-[200px] sm:h-[282px] lg:h-[320px] xl:h-[282px]" />
+    </div>
+    <!-- Image Gallery  -->
+    <div class="flex flex-wrap justify-center sm:justify-start gap-3 pt-2 mb-0">
+      <img
       v-for="(image, index) in fixedGallery"
       :key="index"
       :src="image.image"
       alt="Game Screenshot"
       class="w-38 h-24 sm:h-22 object-cover cursor-pointer border-2 border-transparent hover:border-red-500 bg-[#2E213B] p-0.5"
       @click="selectedImage = image.image"
-    />
+      />
+    </div>
   </div>
 </template>
-<script>
+<script setup>
 import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
-import ImageCard from '../ImagesCard.vue'
 
 const route = useRoute();
 const game = ref(null);
