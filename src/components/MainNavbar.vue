@@ -151,7 +151,7 @@ export default {
     const activeClass = computed(
       () => (path) =>
         route.path === path
-          ? "text-[#DF3F2A] font-bold"
+          ? "text-[#DF3F2A] font-bold "
           : "relative transition duration-300 cursor-pointer hover:text-[#DF3F2A] hover:shadow-[0_0_25px_2px] hover:rounded-full hover:shadow-[#33132A] before:absolute before:top-[-34px] before:left-0 before:w-full before:h-[8px] before:bg-[#DF3F2A] before:transition-all before:duration-300 before:ease-in-out before:scale-0 hover:before:scale-100"
     );
 

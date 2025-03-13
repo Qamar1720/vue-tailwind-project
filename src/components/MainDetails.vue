@@ -20,46 +20,7 @@
 
       <!-- Main Div  -->
       <div class="flex xl:flex-row flex-col lg:gap-0 gap-8 cardssetting">
-        <div v-if="!loading && !error" class="pt-0 flex flex-col">
-          <!-- Main Games Details -->
-          <div
-            class="lg:w-[100%] border border-[#362943] overflow-x-auto overflow-y-scroll h-96 scrollbar-custom"
-          >
-            <div class="flex flex-col gap-x-4">
-              <div
-                v-for="(game, index) in games"
-                :key="index"
-                class="min-w-[900px] flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943]"
-              >
-                <div class="flex items-center gap-5">
-                  <span
-                    class="trapezoid text-xl font-bold text-[#E0DAE2] -ml-4"
-                    >{{ index + 1 }}</span
-                  >
-                  <img
-                    :src="game.background_image"
-                    alt="Game Image"
-                    class="h-16 w-20 object-cover"
-                  />
-                  <h2 class="text-xl md:text-2xl font-bold uppercase truncate">
-                    {{ game.name }}
-                  </h2>
-                  <span class="border px-3 py-1 border-[#3C1831] text-sm"
-                    >BY EPIC</span
-                  >
-                </div>
-                <div class="flex gap-8">
-                  <h2 class="text-xl md:text-2xl font-bold">
-                    {{ game.ratings_count.toLocaleString() }}
-                  </h2>
-                  <h2 class="text-xl md:text-2xl font-bold text-[#C93828]">
-                    {{ game.ratings_count.toLocaleString() }}
-                  </h2>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <VerticalGamesDisplay/> 
 
         <!-- Top Right Div -->
         <div class="xl:w-[34%] w-[100%] xl:ml-8 border-[#3E344B] border-2 xl:mt-0 mt-8 rightbar">
@@ -166,6 +127,8 @@
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
+import HomeChart from "./ChartsPage/HomeChart.vue";
+import VerticalGamesDisplay from "./VerticalGamesDisplay.vue";
 
 const selectedTab= ref('developers')
 const API_KEY = "20ab3549926347d0ae7a343a896a4973";
