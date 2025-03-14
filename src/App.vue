@@ -1,31 +1,26 @@
 <template>
-  <div>
-    <div class="">
-      <div class="">
-        <HeaderNavbar/>
-        <MainNavbar/>
-        <MainGames/>
-        <!-- <MainBody/> -->
-        <Footer/>
-      </div>
-    </div>
-  </div>
+  <!-- Always show these 2 components -->
+  <HeaderNavbar />
+  <MainNavbar />
+  
+  <!-- Router View  -->
+  <router-view />
+  
+  <!-- Always show the footer components -->
+    <Footer />
+  <!-- </div> -->
 </template>
 
 <script>
-  import HeaderNavbar from './components/HeaderNavbar.vue'
-  import MainNavbar from './components/MainNavbar.vue'
-  import Footer from './components/Footer.vue'
-  import MainGames from './components/MainGames.vue';
-  // import MainBody from './components/MainBody.vue'
+import HeaderNavbar from "./components/HeaderNavbar.vue";
+import MainNavbar from "./components/MainNavbar.vue";
+import Footer from "./components/Footer.vue";
 
-  export default {
-    components: {
-      HeaderNavbar,
-      MainNavbar,
-      MainGames,
-      // MainBody,
-      Footer
-    }
-  }
+export default {
+  components: {
+    HeaderNavbar,
+    MainNavbar,
+    Footer,
+  },
+};
 </script>

@@ -8,9 +8,9 @@
             </div>
             <!-- Font Awesome Icons & Login Button -->
             <div class="flex gap-10 items-center text-2xl">
-                <i class="fa fa-search cursor-pointer "></i>
-                <i class="fa fa-user cursor-pointer "></i>
-                <button class="border-2 px-5 py-1 rounded-3xl cursor-pointer hover:text-[#DF3F2A] hover:shadow-[0_0_25px_2px] hover:rounded-full hover:shadow-[#DF3F2A] transition-all">
+                <i class="fa fa-search cursor-pointer text-[#716181] hover:text-[#DF3F2A] hover:shadow-[0_0_25px_2px] hover:rounded-full hover:shadow-[#DF3F2A] transition-all"></i>
+                <i class="fa fa-user cursor-pointer text-[#716181] hover:text-[#DF3F2A] hover:shadow-[0_0_25px_2px] hover:rounded-full hover:shadow-[#DF3F2A] transition-all"></i>
+                <button class="border-2 border-[#3E344B] px-5 py-1 rounded-3xl cursor-pointer hover:text-[#DF3F2A] hover:shadow-[0_0_25px_2px] hover:rounded-full hover:shadow-[#DF3F2A] transition-all">
                 <i class="fa fa-user"></i> Login
                 </button>
             </div>
