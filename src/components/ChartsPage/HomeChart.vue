@@ -1,6 +1,6 @@
 <template>
   <div>
-  <ChartTop/>     
+  <ChartTop/>
   </div>
 </template>
 <script setup>
