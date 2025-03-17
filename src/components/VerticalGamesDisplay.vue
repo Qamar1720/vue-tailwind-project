@@ -9,7 +9,8 @@
               <div
                 v-for="(game, index) in games"
                 :key="index"
-                class="min-w-[900px] flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943]"
+                @click="navigateToGame(game.id)"
+                class="min-w-[900px] flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943] cursor-pointer"
               >
                 <div class="flex items-center gap-5">
                   <span
@@ -44,6 +45,7 @@
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
+import router from "../main";
 import HomeChart from "./ChartsPage/HomeChart.vue";
 
 const API_KEY = "20ab3549926347d0ae7a343a896a4973";
@@ -65,6 +67,11 @@ const fetchGames = async () => {
     loadingGames.value = false;
   }
 };
+
+const navigateToGame = (gameId) => {
+  router.push(`/game/${gameId}`); // Redirect to dynamic route
+};
+
 onMounted(async () => {
     await fetchGames();
 });

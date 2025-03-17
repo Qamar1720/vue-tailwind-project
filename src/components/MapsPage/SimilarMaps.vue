@@ -1,5 +1,5 @@
 <template>
-    <div class="p-6 bg-white pb-30">
+    <div class="p-6 bg-white pb-26">
         <div class="w-full max-w-[1440px] mx-auto">
        <!-- Loading Indicator -->
     <div v-if="loading" class="flex justify-center items-center">
@@ -15,7 +15,7 @@
         
       <!-- Game List -->
       <div
-        class="flex sm:flex-row flex-col justify-between max-w-[1440px] mx-auto pt-24"
+        class="flex sm:flex-row flex-col justify-between max-w-[1440px] mx-auto pt-18"
       >
         <div
           class="xl:text-3xl lg:text-lg md:text-md sm:text-sm font-bold pb-4 text-[#DB3F35]"
@@ -29,7 +29,8 @@
         <div
           v-for="game in games.slice(10, 16)"
           :key="game.id"
-          class="mt-2 shadow-md text-black bg-[#2F223E] min-h-[200px] group relative overflow-hidden rounded-lg"
+          @click="navigateToGame(game.id)"
+          class="mt-2 shadow-md text-black bg-[#2F223E] min-h-[200px] group relative overflow-hidden rounded-lg hover:shadow-gray-700 hover:shadow-[0px_0px_15px_2px] hover:transition-all hover:duration-300 ease-in-out"
         >
         <div class="relative">
           <!-- Game Image -->
@@ -79,6 +80,7 @@
   
   <script setup>
   import { ref, onMounted } from "vue";
+  import router from "../../main";
   
   const API_KEY = "20ab3549926347d0ae7a343a896a4973"; // API key
   const games = ref([]);
@@ -101,7 +103,10 @@
       loading.value = false;
     }
   };
-  
+  const navigateToGame = (gameId) => {
+  router.push(`/game/${gameId}`); // Redirect to dynamic route
+};
+
   // Fetch games when component mounts
   onMounted(fetchGames);
   </script>

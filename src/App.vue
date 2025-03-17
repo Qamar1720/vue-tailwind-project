@@ -4,7 +4,8 @@
   <MainNavbar />
   
   <!-- Router View  -->
-  <router-view />
+  <router-view :key="$route.fullPath"></router-view>
+
   
   <!-- Always show the footer components -->
     <Footer />

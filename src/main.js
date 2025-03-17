@@ -5,7 +5,6 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue'
 import HomePage from './components/HomePage.vue';
 import DiscoverLive from './components/DiscoverLivePage/DiscoverLive.vue';
-import MoreMaps from './components/MapsPage/MoreMaps.vue';
 import MapsPage from './components/MapsPage/MapsPage.vue';
 
 import headerImage from './assets/pics/header_image.jpg';
@@ -74,7 +73,13 @@ const routes = [
 
 const router = createRouter({
   history: createWebHistory(),
-  routes
+  routes,
+  scrollBehavior(to, from, savedPosition) {
+    if (to.path.startsWith("/game/")) {
+      return { top: 900, behavior: "smooth" };
+    }
+    return savedPosition || { top: 0 };
+  }
 });
 
 export default router;

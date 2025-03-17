@@ -15,10 +15,10 @@
         
       <!-- Game List -->
       <div
-        class="flex sm:flex-row flex-col justify-between max-w-[1440px] mx-auto pt-24"
+        class="flex sm:flex-row flex-col justify-between max-w-[1440px] mx-auto pt-18"
       >
         <div
-          class="xl:text-3xl lg:text-lg md:text-md sm:text-sm font-bold pb-4 text-[#DB3F35]"
+          class="text-xl xl:text-3xl lg:text-lg md:text-md sm:text-sm font-bold pb-4 text-[#DB3F35]"
         >
           Popular Maps
         </div>
@@ -49,7 +49,7 @@
             <div class="absolute top-0.5 w-full flex justify-between">
               <!-- Trapezoid Shape -->
               <div
-                class="trapezoid absolute top-40 md:top-48 left-9 flex px-4 py-2 text-white text-xl font-bold"
+                class="trapezoid absolute top-40 md:top-48 left-8 flex px-4 py-2 text-white text-xl font-bold"
               >
                 29546548
               </div>
@@ -124,7 +124,7 @@
   <style scoped>
   .trapezoid {
     position: relative;
-    width: 180px; /* Adjust width as needed */
+    width: 160px; /* Adjust width as needed */
     height: 40px; /* Adjust height as needed */
     background-color: #d93e31; /* Red background */
     clip-path: polygon(0% 0%, 100% 0%, 85% 100%, 15% 100%);

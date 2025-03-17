@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col md:flex-row gap-3 md:gap-0 justify-between border border-[#362943] bg-[#1A0B2E]">
+  <div class="flex flex-col md:flex-row gap-3 md:gap-0 justify-between border border-[#362943] bg-[#1A0B2E] shadow-lg">
     <div class="flex gap-3 p-4 md:py-10">
       <img :src="iconToplevel" alt="Loading Image" />
       <div v-if="games.length">
@@ -11,7 +11,7 @@
     </div>
 
     <div class="flex">
-      <div class="flex space-x-2 pb-4 md:py-10">
+      <div class="flex space-x-2 md:py-10">
         <button
           v-for="tab in tabs"
           :key="tab"
@@ -29,10 +29,11 @@
     </div>
   </div>
 
-  <div class="border text-center mb-4 border-[#362943]">
+  <div class="border text-center mb-4 border-[#362943] shadow-lg">
     <ChartMainData :chartData="getChartData" />
   </div>
 </template>
+
 
 <script setup>
 import iconToplevel from "../../assets/pics/icon_toplevel.png";
@@ -73,15 +74,15 @@ const getChartData = computed(() => {
   const gradient = ctx.createLinearGradient(0, 0, 0, 400);
   gradient.addColorStop(0, "#2F3540");  // Start (Dark Gray)
   gradient.addColorStop(0.25, "#FDC878"); // Near Start (Light Orange)
+  gradient.addColorStop(0.5, "#F16161");  // Center (Red)
   gradient.addColorStop(0.75, "#8CD7C0"); // Near End (Teal)
   gradient.addColorStop(1, "#2F3540");  // End (Dark Gray)
-  gradient.addColorStop(0.5, "#F16161");  // Center (Red)
 
   const datasets = {
-    today: { label: "Today", data: [1300000, 1600000, 1000000, 1400000, 1200000, 1800000, 600000, 1300000, 1200000, 1300000, 1300000, 1500000], borderColor: gradient, backgroundColor: "rgba(75, 192, 192, 0.2)" },
-    week: { label: "Week", data: [1300000, 1100000, 1100000, 400000, 1900000, 1800000, 1200000, 1300000, 1500000, 1300000, 1300000, 1500000], borderColor: gradient, backgroundColor: "rgba(75, 192, 192, 0.2)" },
-    month: { label: "Month", data: [1800000, 1200000, 1600000, 1800000, 1600000, 1400000, 1000000, 900000, 1200000, 1300000, 1300000, 1500000], borderColor: gradient, backgroundColor: "rgba(75, 192, 192, 0.2)" },
-    all: { label: "All", data: [1500000, 1400000, 1000000, 2000000, 1200000, 1100000, 800000, 1300000, 1200000, 1300000, 1300000, 1500000], borderColor: gradient, backgroundColor: "rgba(75, 192, 192, 0.2)" },
+    today: { label: "Today", data: [1300000, 1600000, 1000000, 1400000, 1200000, 1800000, 600000, 1300000, 200000, 1300000, 1300000, 1500000], borderColor: gradient, backgroundColor: "rgba(75, 192, 192, 0.2)" },
+    week: { label: "Week", data: [1300000, 1100000, 1100000, 400000, 1900000, 1800000, 1200000, 1300000, 1500000, 400000, 1300000, 1500000], borderColor: gradient, backgroundColor: "rgba(75, 192, 192, 0.2)" },
+    month: { label: "Month", data: [1800000, 1200000, 1600000, 1800000, 1600000, 1400000, 1000000, 900000, 200000, 1300000, 1300000, 1500000], borderColor: gradient, backgroundColor: "rgba(75, 192, 192, 0.2)" },
+    all: { label: "All", data: [1500000, 1400000, 1000000, 2000000, 1200000, 1100000, 800000, 1300000, 1200000, 300000, 1300000, 1500000], borderColor: gradient, backgroundColor: "rgba(75, 192, 192, 0.2)" },
   };
 
   return {

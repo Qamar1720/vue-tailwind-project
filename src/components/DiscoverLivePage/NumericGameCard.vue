@@ -15,10 +15,10 @@
        
     <!-- Game List -->
     <div
-      class="flex sm:flex-row flex-col justify-between max-w-[1440px] mx-auto pt-24"
+      class="flex sm:flex-row flex-col justify-between max-w-[1440px] mx-auto pt-18"
     >
       <div
-        class="xl:text-3xl lg:text-lg md:text-md sm:text-sm font-bold pb-4 text-[#FDFDFB]"
+        class="text-xl xl:text-3xl lg:text-lg md:text-md sm:text-sm font-bold pb-4 text-[#FDFDFB]"
       >
         Latest Maps
       </div>

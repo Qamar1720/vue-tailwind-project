@@ -12,7 +12,7 @@
     <p v-if="error" class="text-red-500 max-w-[1440px] mx-auto w-full">{{ error }}</p>
 
     <!-- Game List -->
-    <div class="flex sm:flex-row flex-col gap-4 max-w-[1440px] mx-auto pt-24">
+    <div class="flex sm:flex-row flex-col gap-4 max-w-[1440px] mx-auto pt-18">
       <h1 class="text-3xl font-bold max-w-[1440px] mx-auto w-full pb-5">
         Latest Maps
       </h1>
@@ -170,6 +170,7 @@ const fetchGames = async () => {
     loading.value = false;
   }
 };
+// router link for image gallery 
 const navigateToGame = (gameId) => {
   router.push(`/game/${gameId}`); // Redirect to dynamic route
 };

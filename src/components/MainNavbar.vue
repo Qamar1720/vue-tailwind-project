@@ -4,7 +4,7 @@
     <div class="w-full flex min-w-full bg-[#1A0B2E] min-h-screen relative pt-8">
       <!-- Background Image -->
       <div
-        class="w-full min-h-screen bg-no-repeat bg-cover 2xl:bg-contain"
+        class="w-full min-h-screen bg-no-repeat bg-cover bg-center 2xl:bg-cover"
         :style="{ backgroundImage: `url(${navbarBgImage})` }"
       >
         <!-- Page Title -->
@@ -50,18 +50,18 @@
               >DISCOVER LIVE</router-link
             >
             <li
-              @click="navigateTo('categories')"
-              :class="activeClass('categories')"
+              @click="navigateTo('#')"
+              :class="activeClass('')"
             >
               CATEGORIES
             </li>
             <li
-              @click="navigateTo('consulting')"
-              :class="activeClass('consulting')"
+              @click="navigateTo('#')"
+              :class="activeClass('')"
             >
               CONSULTING
             </li>
-            <li @click="navigateTo('news')" :class="activeClass('news')">
+            <li @click="navigateTo('#')" :class="activeClass('')">
               NEWS & UPDATES
             </li>
           </ul>
@@ -81,14 +81,14 @@
         <!-- Mobile Navigation Menu -->
         <div
           v-if="isMenuOpen"
-          class="fixed inset-0 bg-[#1A0B2E] text-white flex md:hidden flex-col items-center justify-center min-h-screen transition-all duration-300 ease-in-out z-10 shadow-md"
+          class="fixed inset-0 bg-[#1A0B2E] text-white flex md:hidden flex-col items-center justify-center h-96 transition-all duration-300 ease-in-out z-10 shadow-md"
         >
           <ul class="flex flex-col gap-6 font-bold w-full text-center">
             <li @click="navigateTo('/')">HOME</li>
             <li @click="navigateTo('discover_live')">DISCOVER LIVE</li>
-            <li @click="navigateTo('categories')">CATEGORIES</li>
-            <li @click="navigateTo('consulting')">CONSULTING</li>
-            <li @click="navigateTo('news')">NEWS & UPDATES</li>
+            <li @click="navigateTo('#')">CATEGORIES</li>
+            <li @click="navigateTo('#')">CONSULTING</li>
+            <li @click="navigateTo('#')">NEWS & UPDATES</li>
           </ul>
         </div>
 

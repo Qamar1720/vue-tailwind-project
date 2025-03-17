@@ -35,7 +35,7 @@ const renderChart = () => {
   if (chartInstance) {
     chartInstance.destroy(); // Ensure the chart resets before re-creating
   }
-
+  
   chartInstance = new Chart(ctx, {
     type: 'line',
     data: {
@@ -135,7 +135,6 @@ onBeforeUnmount(() => {
 
 <style scoped>
 .chart-container {
-  width: 100%;
   position: relative;
 }
 

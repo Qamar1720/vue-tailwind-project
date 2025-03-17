@@ -1,5 +1,5 @@
 <template>
-  <div class="p-6 bg-[#1A0B2E] pb-24">
+  <div class="p-6 bg-[#1A0B2E] pt-20 pb-24">
     <div class="w-full max-w-[1440px] mx-auto">
       <!-- Loading State -->
       <div v-if="loading" class="flex justify-center items-center">
@@ -40,8 +40,7 @@
             <h2 class="text-[#594D61] text-xl flex items-center mr-3">
               <!-- stars count -->
               <span class="pr-4">
-                <!-- <h2 class="text-white flex items-center mr-3">
-                  Filled stars -->
+                  <!-- Filled stars -->
                   <span v-for="n in Math.round(game?.rating || 0)" :key="n">
                     <i class="fa fa-star text-yellow-300"></i>
                   </span>
@@ -55,14 +54,8 @@
                   <i class="fa fa-star text-gray-500"></i>
                 </span>
                 ({{ game?.reviews_text_count || 0 }} reviews)
-                
-                <!-- Show the rating count -->
-                <!-- ({{ game?.rating || "N/A" }} / {{ game?.rating_top || 5 }})
-              </h2> -->
             </span>
           </h2>
-          <!-- reviews number -->
-
           <!-- Div of calender and google play -->
           <div
           class="flex gap-3 sm:flex-row sm:gap-10 text-xl"
@@ -140,7 +133,7 @@ const limitedDescription = computed(() => {
   return game.value.description_raw
     .split(". ")
     .slice(0, 3)
-    .map((sentence) => (sentence.length > 50 ? sentence.slice(0, 80) + "." : sentence.trim() + "."));
+    .map((sentence) => (sentence.length > 82 ? sentence.slice(0, 80) + "." : sentence.trim() + "."));
 });
 
 
@@ -220,13 +213,4 @@ onMounted(async () => {
   color: white;
   font-weight: bold;
 }
-/* @media screen and (min-width: 1280px) and (max-width: 1310px) {
-  .textdesign {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    margin-left: 0px;
-    padding-left: 0px;
-  }
-} */
 </style>

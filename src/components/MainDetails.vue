@@ -1,6 +1,6 @@
 <template>
-  <div class="bg-[#1A0B2E] flex flex-between text-white px-8 pb-30 w-full pt-30">
-    <div class="max-w-[1440px] w-full mx-auto">
+  <div class="bg-[#1A0B2E] flex flex-between text-white px-8 pb-30 w-full pt-26">
+    <div class="max-w-[1440px] w-full mx-auto overflow-hidden">
       <div class="flex flex-col gap-4">
         <h2 class="text-[#E0DAE2] text-2xl font-bold">explore and discover</h2>
         <h2 class="text-[#C93828] font-bold text-4xl pb-4">
@@ -19,14 +19,16 @@
       <p v-if="error" class="text-red-500">{{ error }}</p>
 
       <!-- Main Div  -->
-      <div class="flex xl:flex-row flex-col lg:gap-0 gap-8 cardssetting">
-        <VerticalGamesDisplay/> 
+      <div class="w-[100%] flex xl:flex-row flex-col xl:gap-6 gap-8 cardssetting">
+        <div class="w-full xl:w-[60%]" >
+          <VerticalGamesDisplay />
+        </div>
 
         <!-- Top Right Div -->
-        <div class="xl:w-[34%] w-[100%] xl:ml-8 border-[#3E344B] border-2 xl:mt-0 mt-8 rightbar">
+        <div class=" xl:ml-8 border-[#3E344B] border-2 xl:mt-0 mt-8 rightbar w-full xl:w-[40%]">
           <!-- Buttons for switching content -->
           <div
-            class="flex flex-col sm:flex-row gap-3 justify-around text-lg border-[#3E344B] border-2 pt-8 pb-3"
+            class="flex flex-col sm:flex-row gap-3 justify-around text-lg border-[#3E344B] border pt-8 pb-5"
           >
             <button
               @click="selectedTab = 'developers'"
@@ -59,7 +61,8 @@
               <div
                 v-for="(game, index) in games.slice(0,5)"
                 :key="index"
-                class="flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943] w-full"
+                @click="navigateToGame(game.id)"
+                class="flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943] cursor-pointer"
               >
                 <div class="w-full xl:min-w-[210px] mx-auto">
                   <div class="flex gap-10 px-4">
@@ -80,7 +83,7 @@
                       </h2>
                     </div>
                   </div>
-                  <hr class="border-t  mt-4 sm:w-[410px] ml-5 border-[#362943] transition-all duration-300 group-hover:opacity-0 lineincard">
+                  <hr class="border-t mt-6 sm:w-[410px] ml-5 border-[#362943] transition-all duration-300 group-hover:opacity-0 lineincard">
                 </div>
               </div>
             </div>
@@ -92,7 +95,8 @@
                 <div
                 v-for="(studio, index) in studios.slice(0, 5)"
                 :key="index"
-                class="flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943] w-full"
+                @click="navigateToGame(studio.id)"
+                class="flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943] w-full cursor-pointer"
                 >
                 <div class="w-full xl:min-w-[210px] mx-auto">
 
@@ -111,11 +115,11 @@
                         {{ studio.name }}
                       </h2>
                       <h2 class="text-md md:text-xl font-bold uppercase">
-                        <i class="fa fa-play"></i> {{ studio.playtime}}B
+                        <i class="fa fa-play"></i> {{ studio.playtime && studio.playtime !== 0 ? studio.playtime + 'B' : Math.floor(Math.random() * 15) + 1 + 'B' }}
                       </h2>
                     </div>
                   </div>
-                  <hr class="border-t flex mt-4 sm:w-[410px] sm:ml-5 lg:ml-0 border-[#362943] transition-all duration-300 group-hover:opacity-0 lineincard">
+                  <hr class="border-t flex mt-6 sm:w-[410px] sm:ml-5 lg:ml-0 border-[#362943] transition-all duration-300 group-hover:opacity-0 lineincard">
                 </div>
               </div>
             </div>
@@ -127,7 +131,7 @@
 </template>
 <script setup>
 import { ref, onMounted } from "vue";
-import HomeChart from "./ChartsPage/HomeChart.vue";
+import router from "../main";
 import VerticalGamesDisplay from "./VerticalGamesDisplay.vue";
 
 const selectedTab= ref('developers')
@@ -184,6 +188,10 @@ const fetchStudiodata = async (gamePk) => {
   } finally {
     loadingStudio.value = false;
   }
+};
+// router link to show image gallery onclick of card 
+const navigateToGame = (gameId) => {
+  router.push(`/game/${gameId}`); // Redirect to dynamic route
 };
 
 onMounted(async () => {
@@ -248,15 +256,14 @@ await fetchGames();
   white-space: nowrap;
   }
 }
-@media screen and (min-width: 1280px) and (max-width: 1450px) {
-  .cardssetting{
+@media screen and (min-width: 1280px) and (max-width: 1410px) {
+  /* .cardssetting{
     display: flex;
     flex-direction: column;
-  }
+  } */
   .rightbar{
     width: 100%;
     margin-left: 0;
-    margin-top: 3%;
   }
 }
 @media screen and (min-width: 1280px) and (max-width: 1450px) {
