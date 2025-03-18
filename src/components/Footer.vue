@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[#1A0B2E] text-white px-8 py-12 font-oswald w-full">
+    <div class="bg-[#1A0B2E] text-white px-8 pt-12 pb-4 font-oswald w-full">
         <div class="lg:flex lg:gap-20 max-w-[1440px] w-full mx-auto">
             <!-- Left Section -->
             <div class="flex flex-col gap-6 w-full lg:w-[35%]">

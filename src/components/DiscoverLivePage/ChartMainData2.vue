@@ -68,8 +68,8 @@
             annotations: {
               yAxisLabels: {
                 type: 'label',
-                backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                color: '#fff',
+                backgroundColor: 'rgb(65, 81, 104)',
+                // color: '#fff',
                 font: { size: 12 },
                 padding: 8,
                 borderRadius: 4,
@@ -89,7 +89,7 @@
             beginAtZero: false, // Start y-axis from 0
             grid: {
               display: false,
-              drawOnChartArea: false, // Show grid lines on the chart area
+              drawOnChartArea: true, // Show grid lines on the chart area
               color: 'rgba(255, 255, 255, 0.1)', // Grid line color
               drawTicks: false, // Hide tick marks
             },

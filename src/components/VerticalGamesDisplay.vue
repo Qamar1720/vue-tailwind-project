@@ -88,4 +88,26 @@ onMounted(async () => {
   color: white;
   font-weight: bold;
 }
+/* Custom scrollbar styles */
+.scrollbar-custom::-webkit-scrollbar {
+    width: 14px; /* Total scrollbar width */
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+    background: #332640; /* Track color */
+    border-radius: 10px; /* Rounded track */
+    padding: 3px; /* This won't work directly but keeps consistency */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+    background: #493D55; /*Track Color */
+    border-radius: 8px; /* Rounded edges */
+    width: 8px; /* Make thumb smaller than track to simulate padding */
+    margin: 3px; /* Creates spacing effect */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: #493D55; /* Color on hover */
+}
+
 </style>

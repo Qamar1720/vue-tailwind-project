@@ -4,7 +4,7 @@
     <div class="w-full flex min-w-full bg-[#1A0B2E] min-h-screen relative pt-8">
       <!-- Background Image -->
       <div
-        class="w-full min-h-screen bg-no-repeat bg-cover bg-center 2xl:bg-cover"
+        class="w-full min-h-screen bg-no-repeat bg-cover bg-center"
         :style="{ backgroundImage: `url(${navbarBgImage})` }"
       >
         <!-- Page Title -->
@@ -36,9 +36,10 @@
         class="max-w-[1440px] w-full mx-auto flex md:flex-col md:gap-5 xl:gap-0 xl:flex-row justify-between items-center absolute top-4 left-1/2 -translate-x-1/2 px-2 z-50 bg-transparent"
       >
         <!-- Logo -->
-        <div class="cursor-pointer w-auto px-4 sm:px-0 z-100">
-          <img src="../assets/pics/logo.png" alt="Logo" class="h-12 w-auto" />
-        </div>
+        <router-link to="/" class="cursor-pointer w-auto px-4 sm:px-0 z-100">
+          <img :class="activeClass('/')" src="../assets/pics/logo.png" alt="Logo" class="h-12 w-auto" />
+        </router-link>
+
 
         <!-- Navigation Links -->
         <div>

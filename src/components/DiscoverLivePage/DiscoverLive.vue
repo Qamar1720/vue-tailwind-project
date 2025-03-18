@@ -4,10 +4,12 @@
   </h1> -->
   <div class="bg-[#1A0B2E]">
     <div class="w-full max-w-[1440px] mx-auto bg-[#1A0B2E] pt-14">
-      <h1 class="text-[#DC3F37] pl-5 sm:pl-0 font-bold text-3xl py-3">
+      <h1 class="text-[#DC3F37] pl-8 2xl:pl-0 font-bold text-3xl py-3">
         Live Graph of Concurrent Players
       </h1>
-      <ChartTop2  />
+      <div class="px-8 2xl:px-0">
+        <ChartTop2 />
+      </div>
     </div>
     <NumericGameCard />
     <NumericGamesCard2 />

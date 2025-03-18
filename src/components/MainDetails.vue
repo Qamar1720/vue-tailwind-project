@@ -20,7 +20,7 @@
 
       <!-- Main Div  -->
       <div class="w-[100%] flex xl:flex-row flex-col xl:gap-6 gap-8 cardssetting">
-        <div class="w-full xl:w-[60%]" >
+        <div class="w-full xl:w-[65%]" >
           <VerticalGamesDisplay />
         </div>
 
@@ -28,7 +28,7 @@
         <div class=" xl:ml-8 border-[#3E344B] border-2 xl:mt-0 mt-8 rightbar w-full xl:w-[40%]">
           <!-- Buttons for switching content -->
           <div
-            class="flex flex-col sm:flex-row gap-3 justify-around text-lg border-[#3E344B] border pt-8 pb-5"
+            class="flex flex-col sm:flex-row gap-3 justify-around text-lg border-[#3E344B] border py-6"
           >
             <button
               @click="selectedTab = 'developers'"
@@ -62,7 +62,7 @@
                 v-for="(game, index) in games.slice(0,5)"
                 :key="index"
                 @click="navigateToGame(game.id)"
-                class="flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943] cursor-pointer"
+                class="flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border-[#362943] cursor-pointer"
               >
                 <div class="w-full xl:min-w-[210px] mx-auto">
                   <div class="flex gap-10 px-4">
@@ -96,7 +96,7 @@
                 v-for="(studio, index) in studios.slice(0, 5)"
                 :key="index"
                 @click="navigateToGame(studio.id)"
-                class="flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border border-[#362943] w-full cursor-pointer"
+                class="flex items-center justify-between bg-[#1A0B2E] p-4 shadow-md transition-all border-[#362943] w-full cursor-pointer"
                 >
                 <div class="w-full xl:min-w-[210px] mx-auto">
 
@@ -183,6 +183,7 @@ const fetchStudiodata = async (gamePk) => {
     if (!response.ok) throw new Error("Failed to fetch Studio data");
     const data = await response.json();
     studios.value = data.results || [];
+    studios.value = data.sort((a, b) => a.playtime - b.playtime); // Sort in ascending order
   } catch (err) {
     errorStudios.value = err.message;
   } finally {
