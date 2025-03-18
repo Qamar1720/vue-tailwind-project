@@ -3,7 +3,7 @@
     <div class="flex gap-3 p-4 md:py-10">
       <img :src="iconToplevel" alt="Loading Image" />
       <div v-if="games.length">
-        <h3 class="font-bold text-xl sm:text-3xl text-white">
+        <h3 class="font-bold text-xl sm:text-4xl text-white">
           {{ games[0].added?.toLocaleString() || 'N/A' }}
           <span class="uppercase font-bold text-lg sm:text-xl">(All Time Peak)</span>
         </h3>
