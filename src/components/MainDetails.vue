@@ -107,7 +107,7 @@
                 v-for="(game, index) in games.slice(0, 5)"
                 :key="index"
                 @click="navigateToGame(game.id)"
-                class="flex items-center justify-between bg-[#1A0B2E] pt-10 shadow-md transition-all border-[#362943] cursor-pointer"
+                class="flex items-center justify-between bg-[#1A0B2E] pt-10 transition-all border-[#362943] cursor-pointer"
               >
                 <div class="w-full xl:min-w-[210px] mx-auto">
                   <div class="flex gap-10 px-4">
@@ -171,7 +171,7 @@
                 v-for="(studio, index) in studios.slice(0, 5)"
                 :key="index"
                 @click="navigateToGame(studio.id)"
-                class="flex items-center justify-between bg-[#1A0B2E] pt-10 shadow-md transition-all border-[#362943] w-full cursor-pointer"
+                class="flex items-center justify-between bg-[#1A0B2E] pt-10  transition-all border-[#362943] w-full cursor-pointer"
               >
                 <div class="w-full xl:min-w-[210px] mx-auto">
                   <div class="flex gap-10 px-4">
